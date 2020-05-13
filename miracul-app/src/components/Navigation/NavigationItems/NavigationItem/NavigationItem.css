@@ -1,0 +1,19 @@
+.nav_link {
+  display: inline-block;
+  padding: 0 10px;
+}
+.nav_link a {
+  color: black;
+  height: 100%;
+  padding: 16px 10px;
+}
+.nav_link a:hover {
+  color: #e74c3c;
+}
+.nav_link a.active,
+.nav_link a:hover,
+.nav_link a:active {
+  border-bottom: 2px solid #000 ;
+  transition: all 0.3s ease 0s;
+
+}

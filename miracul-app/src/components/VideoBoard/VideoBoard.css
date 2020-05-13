@@ -1,0 +1,16 @@
+.video-container {
+  position: relative;
+}
+.video-container video {
+  position:relative;
+  z-index:0;
+}
+.content {
+  position:absolute;
+  top:55%;
+  left:6%;
+  z-index:1;
+  color: #eee;
+  font-size: 54px;
+  font-weight: bold;
+}

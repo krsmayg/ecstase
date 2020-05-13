@@ -1,0 +1,73 @@
+.hero-container {
+  height: 75vh;
+  background-image: url('../../assets/images/hero-board.jpg');
+  background-position: top;
+  background-size: cover;
+  position: relative;
+  
+}
+.hero__text-box {
+  position: absolute;
+  text-align: center;
+  top:30%;
+  left: 15%;
+  color: #fff;
+}
+
+.title-primary {
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  display: block;
+}
+.title-primary--main {
+  font-size: 2rem;
+  position: relative;
+}
+.title-primary--sub {
+  font-size: 2rem;
+}
+.btn:link,.btn-white:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.2rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all .2s;
+  font-size: 1.6rem;
+  background-color: #fff;
+  color: #000;
+  margin-top: 0.5rem;
+}
+.btn-white::after {
+  background-color: #fff;
+}
+.btn--animated {
+  animation: moveInUp 1s ease-out .75s;
+  animation-fill-mode: backwards;
+  /* 0%(in animation) - initial statement of the btn*/ }
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  /*Выравнивание кнопки*/
+  left: 0;
+  /*Выравнивание кнопки*/
+  z-index: -1;
+  /*на задний план осн кнопки*/
+  transition: all .4s; }

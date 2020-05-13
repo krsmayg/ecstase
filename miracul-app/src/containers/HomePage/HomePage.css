@@ -1,0 +1,45 @@
+.home-product-title-container{
+    width: 100%;
+    height: 50px;
+    margin: 50px 0;
+    text-align: center;
+    font-size: 28px;
+    position: relative;
+    border-bottom: none;
+}
+
+.sTitle{
+    font-size: 14px;
+    font-weight: 700;
+    display: block;
+    margin-top: 5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase
+}
+.mTitle:before{
+  content: '';
+  display: block;
+  width: 40%;
+  height: 2px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: -2;
+}
+.mTitle::after {
+  content: '';
+  display: block;
+  width: 40%;
+  height: 2px;
+  background: #000;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  z-index: -2;
+}
+.mTitle-el {
+  background: #fff;
+}
+
+
