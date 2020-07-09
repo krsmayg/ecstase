@@ -14,7 +14,7 @@ const posterItem = (props) => {
   return(
     <div className="poster-container">
       <div className="poster-image-box">
-        <a className="poster-link">
+        <a className="poster-link" onClick={props.gotoWallPage}>
           <img src={`http://localhost:9000/images/posters/${props.image}`} style={style}></img>
           <img src={`http://localhost:9000/images/posters/${props.imageHover}`} style={style}></img>
         </a>
@@ -35,4 +35,4 @@ const posterItem = (props) => {
   );
   
 }
-export default posterItem;
+export default (posterItem);

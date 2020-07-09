@@ -1,5 +1,5 @@
 import React from 'react'
-import video from '../../assets/videos/home-page.mp4'
+import video from '../../../assets/videos/home-page.mp4'
 import "./VideoBoard.css"
 
 const videoBoard = () => (

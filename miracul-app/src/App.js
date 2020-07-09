@@ -1,9 +1,8 @@
-import React from 'react';
-import { Component } from 'react';
-import {Router,Switch, Route} from 'react-router-dom'
-import Layout from './containers/Layout/Layout'
-import HomePage from './containers/HomePage/HomePage'
-
+import React,{ Component } from 'react';
+import {Router,Switch, Route} from 'react-router-dom';
+import Layout from './containers/Layout/Layout';
+import HomePage from './containers/HomePage/HomePage';
+import ShopPage from './containers/ShopPage/ShopPage';
 
 class App extends Component{
   render() {
@@ -11,7 +10,7 @@ class App extends Component{
       <div className="App">
         <Layout>
           <Switch>
-            {/* <Route path='/wallshop'  /> */}
+            <Route path='/wallshop' component={ShopPage}  />
             <Route path='/' component={HomePage} exact />
           </Switch>
         </Layout>

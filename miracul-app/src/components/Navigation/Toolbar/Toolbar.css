@@ -5,12 +5,15 @@ align-items: center;
 padding: 10px 3%;
 background-color: rgb(238, 238, 238);
 height: 45px;
-position: relative;
+position: fixed;
+width: 100%;
+z-index: 4;
+top: 0;
 
 }
 nav {
-  width: 100%;
-
+  text-align: center;
+  flex-grow: 1;
 }
 
 .btn {
@@ -49,4 +52,5 @@ color: #e74c3c;;
 .toolbar .toolbar-li {
   display: inline-block;
   padding: 0 5px;
+  margin-right: 6rem;
 }

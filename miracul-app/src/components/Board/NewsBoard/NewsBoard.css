@@ -1,6 +1,6 @@
 .news-container {
   height: 75vh;
-  background-image: url('../../assets/images/news-image.jpg');
+  background-image: url('../../../assets/images/news-image.jpg');
   background-position: top;
   background-size: cover;
   position: relative;

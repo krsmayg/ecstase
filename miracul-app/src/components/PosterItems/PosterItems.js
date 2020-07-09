@@ -22,6 +22,8 @@ class PosterItems extends Component {
           price={poster.price} 
           amount={poster.amount}
           currentAmount={poster.currentAmount}
+          slug={poster.slug}
+          gotoWallPage={()=> this.props.goToPage(poster.slug)}
           />
         </div>
      ))

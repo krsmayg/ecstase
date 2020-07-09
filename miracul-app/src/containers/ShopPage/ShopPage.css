@@ -1,0 +1,21 @@
+.product-shop-wrapper{
+  display: flex;
+  text-align: center; 
+}
+
+.product-shop-info {
+  max-width: 960px;
+  flex-grow: 1;
+  width: 100%;
+}
+.product-shop-info-text {
+  width: 70%;
+}
+.product-shop-info-text-title{
+  font-size: 40px;
+    margin: 0 0 20px;
+}
+.product-shop-info-text-text{
+  font-size: 22px;
+  margin: 0;
+}

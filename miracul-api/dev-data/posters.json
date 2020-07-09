@@ -29,7 +29,7 @@
 },
 {
   "name": "Inner Fish",
-  "price": 80,
+  "price": 120,
   "ratingsQuantity": 6,
   "ratingsAverage": 4.9,
   "description": "This limited edition release is printed in bright, vivid colors on a thick piece of woven canvas. Each print contains a serial number guaranteeing its originality. Curated by Ecstase in a collaboration with Rob Hakemo for a limited edition of 50.",
@@ -37,8 +37,22 @@
   "imageCover": "poster-3-1.jpg",
   "imageCoverHover": "poster-3-2.jpg",
   "amount": 100,
-  "currentAmount": 54,
+  "currentAmount": 64,
   "artist": "Kris Maygur",
   "images" : ["poster-3-1.jpg","poster-3-2.jpg","poster-3-3.jpg","poster-3-4.jpg"]
+},
+{
+  "name": "Toxic Sunset",
+  "price": 80,
+  "ratingsQuantity": 4,
+  "ratingsAverage": 4.9,
+  "description": "This limited edition release is printed in bright, vivid colors on a thick piece of woven canvas. Each print contains a serial number guaranteeing its originality. Curated by Ecstase in a collaboration with Leonardo Senas for a limited edition of 125.",
+  "size": "L",
+  "imageCover": "poster-4-1.jpg",
+  "imageCoverHover": "poster-4-2.jpg",
+  "amount": 125,
+  "currentAmount": 110,
+  "artist": "Leonardo Senas",
+  "images" : ["poster-4-1.jpg","poster-4-2.jpg","poster-4-3.jpg","poster-4-4.jpg"]
 }
 ]

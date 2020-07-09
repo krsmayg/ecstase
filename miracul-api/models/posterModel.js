@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const slugify = require('slugify');
 const posterSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -70,6 +70,14 @@ const posterSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'A poster must have a current amount']
   }
+});
+
+posterSchema.pre('save', function(next) {
+  this.slug = slugify(this.name, { 
+    lower: true,
+    replacement: '-'
+  });
+  next();
 });
 const Poster = mongoose.model('Poster', posterSchema);
 module.exports = Poster;

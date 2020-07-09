@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
  import Footer from '../../components/Footer/Footer'
  import './Layout.css'
 class Layout extends Component {
-  
+
   render() {
     return(
     <Fragment>

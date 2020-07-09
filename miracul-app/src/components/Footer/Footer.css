@@ -6,6 +6,8 @@
   box-sizing: border-box;
   background-color: #18181a;
   color: white;
+  position: relative;
+  width: 100%;
 }
 .inner_footer  {
   display: block;

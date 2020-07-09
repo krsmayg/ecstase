@@ -1,6 +1,6 @@
 .hero-container {
   height: 75vh;
-  background-image: url('../../assets/images/hero-board.jpg');
+  background-image: url('../../../assets/images/hero-board.jpg');
   background-position: top;
   background-size: cover;
   position: relative;

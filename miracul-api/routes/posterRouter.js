@@ -7,5 +7,6 @@ router
   .get(posterController.getAllPosters)
   .post(posterController.createPoster);
 
+router.get('/poster/:slug', posterController.getPoster)
 
 module.exports = router;
