@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
  import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
  import Footer from '../../components/Footer/Footer'
- import './Layout.css'
 class Layout extends Component {
 
   render() {

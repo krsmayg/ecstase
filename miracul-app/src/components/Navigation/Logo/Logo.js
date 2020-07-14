@@ -1,5 +1,5 @@
 import React from 'react'
-import './Logo.css'
+// import './Logo.css'
 const logo = (props) => (
   <a href= {props.link} id="logo-link">
    <img alt="Logo" 

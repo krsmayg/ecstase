@@ -7,7 +7,6 @@ import NewsBoard from "../../components/Board/NewsBoard/NewsBoard";
 import VideoBoard from '../../components/Board/VideoBoard/VideoBoard';
 import TitleText from '../../components/Text/TitleText/TitleText';
 import Spinner from '../../components/UI/Spinner/Spinner'
-import './HomePage.css'
 class HomePage extends Component {
   state = {
     posters: [],

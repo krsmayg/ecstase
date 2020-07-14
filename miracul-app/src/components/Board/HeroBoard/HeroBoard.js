@@ -1,5 +1,4 @@
 import React from 'react';
-import './HeroBoard.css'
 // import heroImg from '../../assets/images/hero-board.jpg'
 const heroBoard = () => (
   <div className="hero-container">

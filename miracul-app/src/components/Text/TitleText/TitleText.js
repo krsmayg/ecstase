@@ -1,10 +1,9 @@
 import React from 'react'
-import './TitleText.css'
 const titleText = (props) =>(
   <div className="home-product-title-container">
     <h2>
       <span className="mTitle">
-        <span className="mTitle-el">
+        <span className="mTitle--el">
         {props.mainText}
         </span>
       </span>

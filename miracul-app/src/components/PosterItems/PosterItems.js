@@ -1,42 +1,40 @@
 import React, { Component, Fragment } from "react";
-import 'swiper/css/swiper.min.css'
-import './PosterItems.css'
-import Swiper from 'swiper'
+import Swiper from 'react-id-swiper';
 import PosterItem from './PosterItem/PosterItem'
+import 'swiper/css/swiper.css';
 
-class PosterItems extends Component {
-  componentDidMount() {
-    var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 4,
-      spaceBetween: 30,
-      centeredSlides: true,
-    });
+const PosterItems = (props) => {
+  const params = {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    slidesPerGroup: 3,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    // scrollbar: {
+    //   el: '.swiper-scrollbar'
+    // },
   }
-   render() {
-     const posters = this.props.posters.map(poster => (
-        <div className="swiper-slide" key={poster.name}>
-          <PosterItem 
-          image={poster.imageCover}
-          name = {poster.name} 
-          imageHover={poster.imageCoverHover}
-          price={poster.price} 
-          amount={poster.amount}
-          currentAmount={poster.currentAmount}
-          slug={poster.slug}
-          gotoWallPage={()=> this.props.goToPage(poster.slug)}
-          />
-        </div>
-     ))
-     return (
-       <Fragment>
-          <div className="swiper-container">
-            <div className="swiper-wrapper">
-            { posters}
-            </div>
-          </div>
-          <div className="swiper-scrollbar"></div>
-       </Fragment>
-     )
-   }
-}
+  const posters = props.posters.map(poster => (
+    <div key={poster.name}>
+      <PosterItem 
+      image={poster.imageCover}
+      name = {poster.name} 
+      imageHover={poster.imageCoverHover}
+      price={poster.price} 
+      amount={poster.amount}
+      currentAmount={poster.currentAmount}
+      slug={poster.slug}
+      gotoWallPage={()=> props.goToPage(poster.slug)}
+      />
+    </div>
+ ))
+  return (
+    <Fragment>
+      <Swiper {...params}>
+        {posters}
+      </Swiper>
+    </Fragment>
+  )
+};
+
 export default PosterItems;
