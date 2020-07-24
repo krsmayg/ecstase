@@ -1,36 +1,22 @@
 import React, { Component } from "react";
 import { Fragment } from "react";
-import axios from 'axios'
+
 import HeroBoard from '../../components/Board/HeroBoard/HeroBoard';
 import PosterItems from '../../components/PosterItems/PosterItems'
 import NewsBoard from "../../components/Board/NewsBoard/NewsBoard";
 import VideoBoard from '../../components/Board/VideoBoard/VideoBoard';
 import TitleText from '../../components/Text/TitleText/TitleText';
-import Spinner from '../../components/UI/Spinner/Spinner'
+import Spinner from '../../components/UI/Spinner/Spinner';
+
+import {fetchPosters} from '../../actions'
+import { connect } from "react-redux";
 class HomePage extends Component {
   state = {
-    posters: [],
     error: true,
     loading:false
   }
   componentDidMount() {
-    this.setState({loading:true});
-    axios.get('http://localhost:9000/api/v1/posters').then(res => {
-      const posters = res.data.data.docs;
-      const updatedPosters = posters.map(poster => {
-        return {
-          ...poster
-        }
-      });
-      if(updatedPosters) {
-        this.setState({loading:false});
-        this.setState({posters: updatedPosters})
-      }
-      console.log(this.state.posters);
-    }).catch(err => {
-      this.setState({error: true})
-      console.log(err)
-    })
+    this.props.fetchPosters();
   }; 
   goToDetailPosterHandler =(slug) => {
     const queryParams = encodeURIComponent("artwork") + '=' + encodeURIComponent(slug);
@@ -39,20 +25,15 @@ class HomePage extends Component {
       search: '?' + queryParams
     })
   }
+  renderPosters() {
+    return !this.props.posters ? <Spinner /> : <PosterItems posters={this.props.posters} goToPage={this.goToDetailPosterHandler}/>
+  }
   render() {
-    let posterItems = null;
-    if( this.state.posters) {
-      posterItems = <PosterItems posters={this.state.posters} goToPage={this.goToDetailPosterHandler}/>
-    }
-    if (this.state.loading) {
-      posterItems = <Spinner />
-    }
     return (
       <Fragment>
         <HeroBoard />
-        <br />
         <TitleText mainText="New Release" sText="THIS WEEK’S RELEASE OF LIMITED ARTWORKS" />
-        {posterItems}
+        {this.renderPosters()}
         <NewsBoard />
         <br />
         <TitleText mainText="Sold products" sText="DON’T MISS THE CHANCE TO GET YOUR ARTWORK" />
@@ -62,4 +43,11 @@ class HomePage extends Component {
     )
   }
 }
-export default HomePage;
+const mapStateToProps = (state) => {
+  return {
+    posters: state.posters
+  }
+}
+export default connect(mapStateToProps, {
+  fetchPosters
+})(HomePage);

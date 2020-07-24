@@ -1,5 +1,4 @@
 import React from 'react';
-import './PosterImageList.css';
 
 const posterImageList = (props) => {
   const posterImages = props.images.map(im => {
@@ -11,7 +10,7 @@ const posterImageList = (props) => {
     <div className="product-gallery-container">
       <div className="product-gallery">
         {posterImages}
-        {/* {posterImages} */}
+        {posterImages}
       </div>
     </div>
   );

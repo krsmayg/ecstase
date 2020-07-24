@@ -1,0 +1,14 @@
+h2 {
+  font-size: 2rem;
+  // @include respond(tab-land) {
+  //     font-size: 1.5rem;
+  // }
+}
+
+.shopify-title {
+   font-weight: 600;
+}
+
+.shopify-text {
+  font-size: 22px;
+}

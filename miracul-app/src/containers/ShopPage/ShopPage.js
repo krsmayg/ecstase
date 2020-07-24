@@ -8,11 +8,8 @@ import img3 from "../../assets/images/shop-image-1.jpg"
 
 import PosterImageList from '../../components/Poster/PosterImageList/PosterImageList';
 import PosterDescription from '../../components/Poster/PosterDescription/PosterDescription'
-import './ShopPage.css'
-
 import TitleText from '../../components/Text/TitleText/TitleText'
-
-
+import ShopPageInfo from '../../components/ShopPageInfo/ShopPageInfo'
 class ShopPage extends Component {
   state = {
     poster:null,
@@ -67,20 +64,7 @@ class ShopPage extends Component {
           {posterDescription}
           {postersImages}
         </div>
-     
-        <div className="product-shop-container">
-          <div className="product-shop-image">
-          </div>
-        </div>
-        {/* <div className="product-shop-wrapper">
-          <div className="product-shop-info">
-            <div className="product-shop-info-text">
-              <h3 className="product-shop-info-text-title">A true work of art</h3>
-              <p  className="product-shop-info-text-text">Printed on 200gsm polyester canvas, using 12-colour digital print and archival ink, this artwork pops. A matte finish makes for great contrast in all lighting situations. The frame is made from Marupa wood, and set with neodynium magnets on the inside.</p>
-            </div>
-          </div>
-        </div> */}
-    
+         <ShopPageInfo />
       </Fragment>
     );
   };

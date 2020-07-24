@@ -1,5 +1,4 @@
 import React from 'react';
-import "./PosterItem.css"
 import Radium from 'radium'
 const posterItem = (props) => {
   const style = {

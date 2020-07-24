@@ -1,12 +1,12 @@
 .toolbar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   padding: 10px 3%;
   background-color: #fff;
   height: 45px;
   position: fixed;
-  width: 100%;
+  width: 96%;
   z-index: 4;
   top: 0;
   border-bottom: 1px solid #ecf0f1;
@@ -14,50 +14,87 @@
     cursor: pointer;
     padding: 0 5px;
   }
-  &--search {
-    margin-right: 100px;
-  }
 
   }
-nav {
+.menu-nav {
   text-align: center;
   flex-grow: 1;
+  transition: height 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  @include respond(tab-small) {
+    z-index: -1;
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    left: 0;
+    top: 100%;
+    height: 0;
+    overflow-x: hidden;
+  }
 }
-
+.menu-nav.toogled {
+  @include respond(tab-small) {
+    height: 100vh;
+  }
+  .nav_links {
+    @include respond(tab-small) {
+      display: flex;
+      flex-direction: column;
+      & > *:not(:first-child) {
+        margin-top: 5px;
+      }
+    }
+  }
+}
 .nav_links {
   list-style: none;
   align-items: center;
   font-weight: 500;
   text-align: center;
+  @include respond(tab-small) {
+    display: none;
+  }
+  & .nav_link {
+    display: inline-block;
+    padding: 0 10px;
+    @include respond(tab-small) {
+      align-self: flex-start;
+      margin-left: -30px;
+      width: 100%;
+      padding: 20px 0;
+      border-bottom: 1px solid #2d3436;
+    }
+    & a {
+      color: black;
+      height: 100%;
+      padding: 23px 10px;
+      @include respond(tab-small) {
+        color: #fff;
+      }
+      &.active,
+      &:hover,
+      &:active {
+          bottom: 0;
+          border-bottom: 1.5px solid $grey-medium ;
+          transition: all .4s ease 0s;
+          @include respond(tab-small) {
+            border-bottom: none;
+            color: $grey-light;
+          }
+      }
+    }
+  }
 }
-.nav_link {
-  display: inline-block;
-  padding: 0 10px;
-}
-.nav_link a {
-  color: black;
-  height: 100%;
-  padding: 23px 10px;
-}
-.nav_link a:hover {
-  // color: #e74c3c;
-}
-.nav_link a.active,
-.nav_link a:hover,
-.nav_link a:active {
-  bottom: 0;;
-  border-bottom: 1.5px solid $grey-medium ;
-  transition: all .4s ease 0s;
-
-}
-
-a {
+.logo-link {
   text-decoration: none;
   margin-right: auto;
+  @include respond(tab-small) {
+    margin-right: initial;
+  }
+  & .logo {
+    cursor: pointer;
+  }
 }
-.logo {
-  cursor: pointer;
-}
+
 
 .toolbar .toolbar-li .toolbar-a {
   font-family: 'arial';
@@ -80,4 +117,51 @@ a {
 .toolbar-cart {
 
 }
-  
+
+.menu-btn {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  transition: all .5s ease-out;
+  // border: 1px solid #000;
+  position: relative;
+  @include respond(tab-small) {
+    display: flex;
+  }
+  &__burger {
+    width: 20px;
+    height: 2px;
+    background: #000;
+    border-radius: 3px;
+    transition: all .5s ease-out;
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: #000;
+      border-radius: 3px;
+      transition: all .5s ease-out;
+    }
+    &::before {
+      transform: translateY(-5px);
+    }
+    &::after {
+      transform: translateY(5px);
+    }
+  }
+}
+.menu-btn.open .menu-btn__burger  {
+    transform:  translateX(-35px);
+    background: transparent;
+    box-shadow: none;
+    &::before {
+      transform: rotate(45deg) translate(25px,-25px);
+    }
+    &::after {
+      transform: rotate(-45deg) translate(25px,25px);
+    }
+}

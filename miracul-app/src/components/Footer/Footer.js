@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../../components/Navigation/Logo/Logo';
-import './Footer.css'
+// import './Footer.css'
 
 const footer = (props) => (
   <div className="footer">

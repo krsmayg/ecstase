@@ -1,5 +1,5 @@
 import React from 'react'
-import './PosterDescription.css'
+// import './PosterDescription.css'
 import Accardion from './AccordionDescription/AccordionDescription'
 const posterDescription = (props) => {
   return (

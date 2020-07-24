@@ -1,32 +1,66 @@
 
 //  HERO SECTION
  .hero-container {
-  height: 75vh;
-  background-image: url('../../assets/images/hero-board.jpg');
-  background-position: top;
-  background-size: cover;
+  margin-top: 65px;
   position: relative;
-  
+  @include respond(tab-small) {
+    max-height: 570px;
+  }
+  @include respond(phone) {
+    max-height: 450px;
+  }
 }
 .hero__text-box {
   position: absolute;
   text-align: center;
-  top:30%;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
   left: 15%;
-  color: #fff;
+  color: $black;
+  @include respond(correct1) {
+    left: 10%;
+    width: 375px;
+  }
+  @include respond(tab-land) {
+    left: 7%;
+  }
+  @include respond(tab-port) {
+    left: 5%;
+  }
+  @include respond(tab-small) {
+    position: relative;
+    top: auto;
+    left: auto;
+    box-sizing: border-box;
+    width: 98%;
+   
+  }
 }
 
 .title-primary {
   text-transform: uppercase;
   backface-visibility: hidden;
   display: block;
-}
-.title-primary--main {
-  font-size: 2rem;
-  position: relative;
-}
-.title-primary--sub {
-  font-size: 2rem;
+  
+  &--main,&--sub {
+    font-size: 2rem;
+    position: relative;
+    @include respond(correct1) {
+      font-size: 1.5rem;
+    }
+    @include respond(tab-land) {
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+    @include respond(tab-small) {
+      text-decoration: none;
+    }
+  
+  }
+  // &--sub {
+  //   font-size: 2rem;
+  // }
 }
 
 .home-product-title-container{
@@ -37,4 +71,76 @@
   font-size: 28px;
   position: relative;
   border-bottom: none;
+ 
+}
+
+.hero-img-pc,.hero-img-mb {
+  max-width: 100%;
+  vertical-align: middle;
+}
+.hero-img-pc {
+  @include respond(tab-small) {
+    display: none ;
+  }
+}
+.hero-img-mb {
+  display: none;
+  @include respond(tab-small) {
+    display: block ;
+    margin-bottom: 120px;
+  }
+}
+//NEWS BOARD
+
+.news-container {
+
+}
+.news__text-box {
+  position: absolute;
+  text-align: center;
+  top:30%;
+  left: 15%;
+  color: #fff;
+}
+.news-img-pc,.news-img-mb {
+  max-width: 100%;
+  vertical-align: middle;
+}
+.news-img-pc {
+  @include respond(tab-small) {
+    display: none ;
+  }
+}
+.news-img-mb {
+  display: none;
+  @include respond(tab-small) {
+    display: block ;
+  }
+}
+
+// VIDEO BOARD
+
+.video-container {
+  position: relative;
+}
+.video-container video {
+  position:relative;
+  z-index:0;
+}
+.content {
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  left:6%;
+  z-index:1;
+  color: #eee;
+  font-size: 54px;
+  font-weight: bold;
+  @include respond(phone) {
+    font-size: 14px;
+  }
+  @include respond(tab-land) {
+    font-size: 34px;
+  }
+ 
 }

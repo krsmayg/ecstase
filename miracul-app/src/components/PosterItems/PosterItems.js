@@ -5,14 +5,13 @@ import 'swiper/css/swiper.css';
 
 const PosterItems = (props) => {
   const params = {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    slidesPerGroup: 3,
+    slidesPerView: 4,
+    slidesPerGroup: 4,
     loop: true,
     loopFillGroupWithBlank: true,
-    // scrollbar: {
-    //   el: '.swiper-scrollbar'
-    // },
+    scrollbar: {
+      el: '.swiper-scrollbar'
+    },
   }
   const posters = props.posters.map(poster => (
     <div key={poster.name}>

@@ -1,17 +1,26 @@
 .btn:link,.btn-white:visited {
-  text-transform: uppercase;
+  // text-transform: uppercase;
   text-decoration: none;
-  padding: 1.2rem 4rem;
+  font-weight: bold;
+  padding: 1.2rem 6rem;
   display: inline-block;
   border-radius: 10rem;
   transition: all .2s;
-  font-size: 1.6rem;
-  background-color: #fff;
-  color: #000;
+  font-size: 1.2rem;
+  background-color: $black;
+  color: $white;
   margin-top: 0.5rem;
+  @include respond(correct1) {
+    font-size: 0.9rem;
+  }
+  @include respond(tab-port) {
+    text-transform: none;
+    // width: 100%;
+    padding: 1.2rem 4rem;
+  }
 }
 .btn-white::after {
-  background-color: #fff;
+  background-color: $black;
 }
 .btn--animated {
   animation: moveInUp 1s ease-out .75s;
@@ -20,7 +29,7 @@
 
 .btn:hover {
   transform: translateY(-3px);
-  background-color: #fff !important;
+  background-color: $black !important;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
   .btn:hover::after {
     transform: scaleX(1.4) scaleY(1.6);
@@ -30,17 +39,21 @@
   transform: translateY(-1px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
-.btn::after {
-  content: "";
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 100px;
-  position: absolute;
-  top: 0;
-  /*Выравнивание кнопки*/
-  left: 0;
-  /*Выравнивание кнопки*/
-  z-index: -1;
-  /*на задний план осн кнопки*/
-  transition: all .4s; }
+// .btn::after {
+//   content: "";
+//   display: inline-block;
+//   height: 100%;
+//   width: 100%;
+//   border-radius: 100px;
+//   position: absolute;
+//   top: 0;
+//   /*Выравнивание кнопки*/
+//   left: 0;
+//   /*Выравнивание кнопки*/
+//   z-index: -1;
+//   /*на задний план осн кнопки*/
+//   transition: all .4s; 
+//   @include respond(tab-land) {
+//     content: none;
+//   }
+// }

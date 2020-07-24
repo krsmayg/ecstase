@@ -1,0 +1,20 @@
+.shopify-section {
+margin-top: 50px;
+}
+.product-detail-block {
+  margin-bottom: 50px;
+  & .container {
+    max-width: 960px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    & .product-detail-img {
+      max-width: 100%;
+      vertical-align: middle;
+    }
+    & .shopify-text-box {
+      width: 70%;
+    }
+  }
+}
+

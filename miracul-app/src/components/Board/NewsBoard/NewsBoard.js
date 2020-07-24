@@ -1,9 +1,10 @@
 import React from 'react';
-import './NewsBoard.css'
+import newsPc from '../../../assets/images/news-board-pc.jpg';
+import newsMb from '../../../assets/images/news-board-mb.jpg';
 const newsBoard = () => (
   <div className="news-container">
-    <div className = "news__text-box">
-    </div>
+    <img src={newsPc} className="news-img-pc"></img>
+    <img src={newsMb} className="news-img-mb"></img>
   </div>
 )
 export default newsBoard;
