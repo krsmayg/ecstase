@@ -2,14 +2,13 @@ import { Component, Fragment } from "react";
 import React from 'react';
 import axios from 'axios'
 
-import img1 from "../../assets/images/hero-board.jpg"
-import img2 from "../../assets/images/shop-image-1.jpg"
-import img3 from "../../assets/images/shop-image-1.jpg"
 
 import PosterImageList from '../../components/Poster/PosterImageList/PosterImageList';
-import PosterDescription from '../../components/Poster/PosterDescription/PosterDescription'
-import TitleText from '../../components/Text/TitleText/TitleText'
-import ShopPageInfo from '../../components/ShopPageInfo/ShopPageInfo'
+import PosterDescription from '../../components/Poster/PosterDescription/PosterDescription';
+import TitleText from '../../components/Text/TitleText/TitleText';
+import ShopPageInfo from '../../components/ShopPageInfo/ShopPageInfo';
+
+import Spinner from '../../components/UI/Spinner/Spinner';
 class ShopPage extends Component {
   state = {
     poster:null,
@@ -55,7 +54,7 @@ class ShopPage extends Component {
        priceHandle= {this.posterPriceHandler}
        />
     } else {
-       console.log('smth bad')
+      postersImages = <Spinner />
     }
     return(
       <Fragment>

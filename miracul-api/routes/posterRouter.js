@@ -7,6 +7,11 @@ router
   .get(posterController.getAllPosters)
   .post(posterController.createPoster);
 
-router.get('/poster/:slug', posterController.getPoster)
+router.get('/poster/:slug', posterController.getPoster);
+
+router
+  .route('/:id')
+  .get(posterController.getPosterById);
+
 
 module.exports = router;

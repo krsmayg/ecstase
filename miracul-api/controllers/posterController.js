@@ -5,7 +5,7 @@ const catchAsync = require('../utils/catchAsync');
 
 exports.getAllPosters = factory.getAll(Poster);
 exports.createPoster = factory.createOne(Poster);
-
+exports.getPosterById = factory.getOne(Poster);
 exports.getPoster = catchAsync(async (req, res, next) => {
   // 1) Get the data, for the requested tour (including reviews and guides)
   const poster = await Poster.findOne({ slug: req.params.slug },(error,post) => {

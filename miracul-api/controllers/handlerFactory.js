@@ -44,6 +44,7 @@ exports.getOne = (Model, popOptions) =>
   catchAsync(async (req, res, next) => {
     let query = Model.findById(req.params.id);
     if (popOptions) query = query.populate(popOptions);
+    console.log('MAAATCH');
     const doc = await query;
     // const doc = await Model.findById(req.params.id).populate('reviews');
     // const poster = posters.find(el => el.id === id); // мы хотим найти обьект в котором id === req.params

@@ -79,6 +79,7 @@ posterSchema.pre('save', function(next) {
   });
   next();
 });
+
 const Poster = mongoose.model('Poster', posterSchema);
 module.exports = Poster;
 

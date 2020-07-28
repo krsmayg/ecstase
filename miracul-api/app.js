@@ -8,7 +8,9 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
+
 const posterRouter = require('./routes/posterRouter');
+const collectionRouter = require('./routes/collectionRouter')
 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -42,6 +44,7 @@ app.use(xss());
 
 //ROUTES
 app.use('/api/v1/posters',posterRouter);
+app.use('/api/v1/collections',collectionRouter);
 
 // error handler
 app.all('*', (req, res, next) => {

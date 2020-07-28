@@ -37,7 +37,7 @@ class HomePage extends Component {
         <NewsBoard />
         <br />
         <TitleText mainText="Sold products" sText="DON’T MISS THE CHANCE TO GET YOUR ARTWORK" />
-        <h1>in proccess....</h1>
+        <Spinner />
         <VideoBoard />
       </Fragment>
     )
