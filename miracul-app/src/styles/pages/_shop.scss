@@ -139,3 +139,10 @@
   padding: 3px;
   text-align: left;
 }
+
+.wall-poster-item {
+  max-height: 400px;
+  & img {
+    width: 100%;
+  } 
+}

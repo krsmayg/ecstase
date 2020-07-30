@@ -61,6 +61,9 @@ const posterSchema = new mongoose.Schema({
     type: String,
     required: [true, 'A tour must have a hover image']
   },
+  imageWall: {
+    type: String,
+  },
   images: [String],
   amount: {
     type: Number,

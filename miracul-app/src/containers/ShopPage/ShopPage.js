@@ -7,7 +7,7 @@ import PosterImageList from '../../components/Poster/PosterImageList/PosterImage
 import PosterDescription from '../../components/Poster/PosterDescription/PosterDescription';
 import TitleText from '../../components/Text/TitleText/TitleText';
 import ShopPageInfo from '../../components/ShopPageInfo/ShopPageInfo';
-
+import WallCollections from '../../components/WallCollections/WallCollections'
 import Spinner from '../../components/UI/Spinner/Spinner';
 class ShopPage extends Component {
   state = {
@@ -58,7 +58,9 @@ class ShopPage extends Component {
     }
     return(
       <Fragment>
-        <h1>I am a Shop page component :)</h1>
+         <div id="shop-slider">
+            <WallCollections />
+         </div>
         <div className="shop-page-container">
           {posterDescription}
           {postersImages}

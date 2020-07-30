@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux';
 import posterReducer from './postersReducer';
+import collectionReducer from './collectionReducer';
 export default combineReducers({
-    posters: posterReducer
+    posters: posterReducer,
+    collectionState: collectionReducer
 });
 

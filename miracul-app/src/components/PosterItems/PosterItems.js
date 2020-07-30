@@ -14,7 +14,7 @@ const PosterItems = (props) => {
     },
   }
   const posters = props.posters.map(poster => (
-    <div key={poster.name}>
+    <div key={poster.name} id="swiper-slide">
       <PosterItem 
       image={poster.imageCover}
       name = {poster.name} 

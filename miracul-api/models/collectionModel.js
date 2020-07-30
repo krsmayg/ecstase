@@ -37,11 +37,11 @@ const collectionSchema = new mongoose.Schema({
 //     next();
 // })
 
-// collectionSchema.pre(/^find/, function(next) {
-//     this.find().populate({
-//         path:'posters',
-//     });
-//     next();
-// });
+collectionSchema.pre(/^find/, function(next) {
+    this.find().populate({
+        path:'posters',
+    });
+    next();
+});
 const Collection = mongoose.model('Collection', collectionSchema);
 module.exports = Collection;
