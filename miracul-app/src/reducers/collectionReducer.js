@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
                 ...state,
                 collections: action.payload
             }
-        case FETCH_COLLECIONS: 
+        case FETCH_COLLECION: 
             return {
                 ...state,
                 collection: action.payload

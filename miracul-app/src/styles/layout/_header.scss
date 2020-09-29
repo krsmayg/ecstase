@@ -15,7 +15,24 @@
     padding: 0 5px;
   }
 
+}
+.right-nav {
+  position: relative;
+  &__input {
+    position: absolute;
+    right: 30px;
+    top: 48px;
+    width: 220px;
   }
+  &__searhed-list {
+    background-color: antiquewhite;
+    position: absolute;
+    right: 30px;
+    top: 70px;
+    width: 230px;
+
+  }
+}
 .menu-nav {
   text-align: center;
   flex-grow: 1;

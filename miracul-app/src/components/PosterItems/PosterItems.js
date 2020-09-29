@@ -13,6 +13,7 @@ const PosterItems = (props) => {
       el: '.swiper-scrollbar'
     },
   }
+  console.log(props.posters);
   const posters = props.posters.map(poster => (
     <div key={poster.name} id="swiper-slide">
       <PosterItem 
