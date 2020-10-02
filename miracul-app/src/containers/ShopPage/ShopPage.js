@@ -1,14 +1,14 @@
 import { Component, Fragment } from "react";
 import React from 'react';
-import axios from 'axios'
-
-
+import axios from 'axios';
 import PosterImageList from '../../components/Poster/PosterImageList/PosterImageList';
 import PosterDescription from '../../components/Poster/PosterDescription/PosterDescription';
 import TitleText from '../../components/Text/TitleText/TitleText';
 import ShopPageInfo from '../../components/ShopPageInfo/ShopPageInfo';
 import WallCollections from '../../components/WallCollections/WallCollections'
 import Spinner from '../../components/UI/Spinner/Spinner';
+import {withRouter} from 'react-router-dom'
+
 class ShopPage extends Component {
   state = {
     poster:null,
@@ -28,6 +28,25 @@ class ShopPage extends Component {
       this.setState({price: this.state.poster.price});
     }
   }
+  componentDidUpdate(prevProps, prevState){
+    // console.group('Component Did update: ');
+    // console.log(prevProps);
+    // console.log(this.props);
+    // console.groupEnd();
+    if(this.props.location != prevProps.location) {
+      const query= this.props.location.search;
+      const slug = query.split('=')[1];
+      console.log(slug);
+      axios.get(`http://localhost:9000/api/v1/posters/poster/${slug}`).then(res => {
+        const poster = {...res.data.data.poster};
+        if(poster) {
+          this.setState({poster});
+        }
+      }).catch(err => {
+        console.log(err);
+      });
+    }
+  }
   componentDidMount() {
     const query= this.props.location.search;
     const slug = query.split('=')[1];
@@ -40,7 +59,7 @@ class ShopPage extends Component {
       }
     }).catch(err => {
       console.log(err);
-    })
+    });
   }
   render() {
     let postersImages = null;
@@ -70,4 +89,4 @@ class ShopPage extends Component {
     );
   };
 };
-export default ShopPage;
+export default withRouter(ShopPage);
