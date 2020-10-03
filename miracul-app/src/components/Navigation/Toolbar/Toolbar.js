@@ -9,6 +9,8 @@ import {fetchPosters} from '../../../actions/index';
 import {connect} from 'react-redux';
 import { withRouter } from "react-router";
 
+import Basket from '../../Basket/Basket';
+
 const Toolbar = React.memo(props => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchInputVisibility,setSearchInputVisibility] = useState(false);
@@ -66,6 +68,12 @@ const Toolbar = React.memo(props => {
       setMenuOpen(false);
     }
   } 
+  const basketHandler = () => {
+    const doc = document.getElementById('basket-drawer');
+    const overlayBasket = document.querySelector('.basket-overlay');
+    doc.classList.add('visible');
+    overlayBasket.classList.add('visible');
+  };
   return (
     <header className='toolbar'>
        <div className="menu-btn" onClick={burgerBtnHandler}>
@@ -76,11 +84,12 @@ const Toolbar = React.memo(props => {
         <NavigationItems />
       </nav>
       <div className="right-nav">
-        <IosCartOutline onClick={() => alert('Hi!')} fontSize="24px"className="toolbar--cart"  />    
+        <IosCartOutline onClick={basketHandler} fontSize="24px"className="toolbar--cart"  />    
         <IosSearchOutline onClick={() => setSearchInputVisibility(!searchInputVisibility)} fontSize="24px" className="toolbar--search"  /> 
         {searchInputVisibility  ? <input className="right-nav__input" onChange={handleInputOnChange}></input> : null }  
         {searchPostersAndRender()}
       </div>
+      <Basket />
     </header>
   );
 });
