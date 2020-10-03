@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState} from 'react';
 // import './Toolbar.css'
 import NavigationItems from '../NavigationItems/NavigationItems'
 import Logo from '../Logo/Logo'
@@ -8,14 +8,6 @@ import IosSearchOutline from 'react-ionicons/lib/IosSearchOutline';
 import {fetchPosters} from '../../../actions/index';
 import {connect} from 'react-redux';
 import { withRouter } from "react-router";
-
-function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-}
 
 const Toolbar = React.memo(props => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,7 +28,6 @@ const Toolbar = React.memo(props => {
       pathname:'/wallshop',
       search: '?' + queryParams
     });
-    // setHistoryPage({  pathname:'/wallshop', search: '?' + queryParams});
   }
   const searchPostersAndRender = () => {
     if(props.posters) {
@@ -47,6 +38,7 @@ const Toolbar = React.memo(props => {
       
       return (
         <div className="right-nav__searhed-list" hidden={!searchInputVisibility}>
+          <div className="right-nav__searhed-list__list-info"><span>{`${filteredPosters.length} product found`}</span></div>
           {filteredPosters.map(poster => <div className="right-nav__searhed-list__item-container" onClick={() => goToPosterPage(poster.slug)}>
              <img src={`http://localhost:9000/images/posters/${poster.imageWall}`} width="60" height="80" />
               <div className="right-nav__searhed-list__item-container__info-box" > 
