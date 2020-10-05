@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 // import './Toolbar.css'
 import NavigationItems from '../NavigationItems/NavigationItems'
 import Logo from '../Logo/Logo'
 import LogoNodejs from 'react-ionicons/lib/LogoNodejs'
 import IosCartOutline from 'react-ionicons/lib/IosCartOutline';
 import IosSearchOutline from 'react-ionicons/lib/IosSearchOutline';
-import {fetchPosters} from '../../../actions/index';
+import {fetchPosters, fetchBasketNumber} from '../../../actions/index';
 import {connect} from 'react-redux';
 import { withRouter } from "react-router";
 
@@ -15,12 +15,19 @@ const Toolbar = React.memo(props => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchInputVisibility,setSearchInputVisibility] = useState(false);
   const [searchValue, setSearhValue] = useState('');
-
+  // const [basketCounter, setBasketCounter] = useState(0)
+  useEffect(() => {
+    if(localStorage.getItem('basketCounter') === null) {
+      localStorage.setItem('basketCounter', 0);
+    } else {
+      // setBasketCounter(localStorage.getItem('basketCounter'));
+      props.fetchBasketNumber();
+    }
+  }, [])
   
   const handleInputOnChange = (event) => {
     setSearhValue(event.target.value);
     console.log(searchValue);
-
   };
   const goToPosterPage = (slug) => {
     const queryParams = encodeURIComponent("artwork") + '=' + encodeURIComponent(slug);
@@ -84,7 +91,8 @@ const Toolbar = React.memo(props => {
         <NavigationItems />
       </nav>
       <div className="right-nav">
-        <IosCartOutline onClick={basketHandler} fontSize="24px"className="toolbar--cart"  />    
+        <IosCartOutline onClick={basketHandler} fontSize="24px"className="toolbar--cart" />
+        <div className="toolbar--counter"><span>{props.basketCounter.basketCounter}</span></div>  
         <IosSearchOutline onClick={() => setSearchInputVisibility(!searchInputVisibility)} fontSize="24px" className="toolbar--search"  /> 
         {searchInputVisibility  ? <input className="right-nav__input" onChange={handleInputOnChange}></input> : null }  
         {searchPostersAndRender()}
@@ -96,8 +104,9 @@ const Toolbar = React.memo(props => {
 
 const mapStateToProps = (state) => {
   return {
-    posters: state.posters
+    posters: state.posters,
+    basketCounter: state.basketState
   }
 }
-export default connect(mapStateToProps, fetchPosters)(withRouter(Toolbar));
+export default connect(mapStateToProps, {fetchPosters, fetchBasketNumber})(withRouter(Toolbar));
 

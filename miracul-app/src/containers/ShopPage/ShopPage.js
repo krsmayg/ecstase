@@ -7,7 +7,10 @@ import TitleText from '../../components/Text/TitleText/TitleText';
 import ShopPageInfo from '../../components/ShopPageInfo/ShopPageInfo';
 import WallCollections from '../../components/WallCollections/WallCollections'
 import Spinner from '../../components/UI/Spinner/Spinner';
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {setBasketNumber} from '../../actions/index';
+
 
 class ShopPage extends Component {
   state = {
@@ -28,11 +31,10 @@ class ShopPage extends Component {
       this.setState({price: this.state.poster.price});
     }
   }
+  addtoBasketHandler = () => {
+    this.props.setBasketNumber();
+  };
   componentDidUpdate(prevProps, prevState){
-    // console.group('Component Did update: ');
-    // console.log(prevProps);
-    // console.log(this.props);
-    // console.groupEnd();
     if(this.props.location != prevProps.location) {
       const query= this.props.location.search;
       const slug = query.split('=')[1];
@@ -71,6 +73,7 @@ class ShopPage extends Component {
        title={this.state.poster.name}
        description={this.state.poster.description}
        priceHandle= {this.posterPriceHandler}
+       addtoBasket = {this.addtoBasketHandler}
        />
     } else {
       postersImages = <Spinner />
@@ -89,4 +92,4 @@ class ShopPage extends Component {
     );
   };
 };
-export default withRouter(ShopPage);
+export default connect(null, {setBasketNumber})(withRouter(ShopPage));    
