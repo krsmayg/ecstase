@@ -1,7 +1,8 @@
-import {FETCH_BASKET_NUMBER, SET_BASKET_NUMBER} from '../actions/actionTypes';
+import {ADD_PRODUCT_TO_BASKET, FETCH_BASKET_NUMBER, FETCH_PRODUCTS_IN_BASKET, SET_BASKET_NUMBER} from '../actions/actionTypes';
 import logo from '../components/Navigation/Logo/Logo';
 const initialState = {
-    basketCounter: 0
+    basketCounter: 0,
+    products: []
 };
 
 export default(state = initialState, action) => {
@@ -18,6 +19,16 @@ export default(state = initialState, action) => {
             return {
                 ...state,
                 basketCounter: newCounter
+            }
+        case ADD_PRODUCT_TO_BASKET:
+            return {
+                ...state,
+                products: action.payload
+            }
+        case FETCH_PRODUCTS_IN_BASKET: 
+            return {
+                ...state,
+                products: action.payload
             }
         default: return state
     }

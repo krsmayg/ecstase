@@ -1,5 +1,9 @@
 import axiosData from '../api/axiosConfig';
-import {FETCH_POSTERS, FETCH_COLLECIONS, FETCH_BASKET_NUMBER,SET_BASKET_NUMBER} from './actionTypes';
+import {
+       FETCH_POSTERS, FETCH_COLLECIONS,
+       FETCH_BASKET_NUMBER,SET_BASKET_NUMBER,
+       ADD_PRODUCT_TO_BASKET,
+       FETCH_PRODUCTS_IN_BASKET} from './actionTypes';
 
 export const fetchPosters = () => async dispatch =>  {
     let data = [];
@@ -34,4 +38,17 @@ export const setBasketNumber = () => async dispatch => {
     counter++;
     await localStorage.setItem('basketCounter',counter);
     dispatch({type:SET_BASKET_NUMBER});
+}
+
+export const addProductToBasket = (product) => dispatch =>{
+    let arr= JSON.parse(localStorage.getItem('productsInBasket'));
+    let filteredProduct = arr.find(el => el.id === product.id);
+    filteredProduct ? filteredProduct.amount++ : arr.push(product);
+    localStorage.setItem('productsInBasket', JSON.stringify(arr));
+    dispatch({type:ADD_PRODUCT_TO_BASKET, payload: arr })
+}
+
+export const fetchProductsBasket = () => dispatch =>{
+    let arr= JSON.parse(localStorage.getItem('productsInBasket'));
+    dispatch({type:FETCH_PRODUCTS_IN_BASKET, payload: arr });
 }

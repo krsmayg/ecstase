@@ -7,7 +7,7 @@ const PosterItems = (props) => {
   const params = {
     slidesPerView: 4,
     slidesPerGroup: 4,
-    loop: true,
+    // loop: true,
     loopFillGroupWithBlank: true,
     scrollbar: {
       el: '.swiper-scrollbar'

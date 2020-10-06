@@ -8,19 +8,17 @@ import IosSearchOutline from 'react-ionicons/lib/IosSearchOutline';
 import {fetchPosters, fetchBasketNumber} from '../../../actions/index';
 import {connect} from 'react-redux';
 import { withRouter } from "react-router";
-
 import Basket from '../../Basket/Basket';
 
 const Toolbar = React.memo(props => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchInputVisibility,setSearchInputVisibility] = useState(false);
   const [searchValue, setSearhValue] = useState('');
-  // const [basketCounter, setBasketCounter] = useState(0)
   useEffect(() => {
     if(localStorage.getItem('basketCounter') === null) {
       localStorage.setItem('basketCounter', 0);
+      localStorage.setItem('productsInBasket', JSON.stringify([]));
     } else {
-      // setBasketCounter(localStorage.getItem('basketCounter'));
       props.fetchBasketNumber();
     }
   }, [])
