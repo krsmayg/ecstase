@@ -27,6 +27,7 @@ const Basket = (props) => {
                             <div className="basket-item__info__meta-box">
                                 <p>Size: {product.size}</p>
                                 <p style={{color:'#6b6969'}}>${product.price}</p>
+                                <p>{product.id}</p>
                             </div>
                             <ToogleBasketItem product={product} />
                         </div>

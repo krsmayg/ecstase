@@ -1,4 +1,9 @@
-import {ADD_PRODUCT_TO_BASKET, FETCH_BASKET_NUMBER, FETCH_PRODUCTS_IN_BASKET, SET_BASKET_NUMBER} from '../actions/actionTypes';
+import {ADD_PRODUCT_TO_BASKET, 
+    DECREASE_BASKET_NUMBER,
+    FETCH_BASKET_NUMBER,
+    FETCH_PRODUCTS_IN_BASKET, 
+    SET_BASKET_NUMBER,
+    DECREASE_PRODUCTAMOUNT_IN_BASKET} from '../actions/actionTypes';
 import logo from '../components/Navigation/Logo/Logo';
 const initialState = {
     basketCounter: 0,
@@ -20,11 +25,25 @@ export default(state = initialState, action) => {
                 ...state,
                 basketCounter: newCounter
             }
+        case DECREASE_BASKET_NUMBER: 
+            console.log('hello from SET_REDUCER');
+            let counter2 = state.basketCounter * 1;
+            let newCounter2 = counter2 - 1;
+            return {
+                ...state,
+                basketCounter: newCounter2
+            }
         case ADD_PRODUCT_TO_BASKET:
             return {
                 ...state,
                 products: action.payload
             }
+        case DECREASE_PRODUCTAMOUNT_IN_BASKET:
+            return {
+                ...state,
+                products: action.payload
+            }
+        
         case FETCH_PRODUCTS_IN_BASKET: 
             return {
                 ...state,
