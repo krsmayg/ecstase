@@ -45,7 +45,7 @@ export const decreaseBasketNumber = (number) => dispatch => {
     let counter = localStorage.getItem('basketCounter');
     number ? counter -= number : counter--;
     localStorage.setItem('basketCounter',counter);
-    dispatch({type:DECREASE_BASKET_NUMBER});
+    dispatch({type:DECREASE_BASKET_NUMBER, payload: counter});
 };
 export const addProductToBasket = (product) => dispatch =>{
     let arr= JSON.parse(localStorage.getItem('productsInBasket'));
@@ -81,3 +81,10 @@ export const fetchProductsBasket = () => dispatch =>{
     let arr= JSON.parse(localStorage.getItem('productsInBasket'));
     dispatch({type:FETCH_PRODUCTS_IN_BASKET, payload: arr });
 }
+
+export const removeProductFromBasket = (product) =>  dispatch => {
+    let arr = JSON.parse(localStorage.getItem('productsInBasket'));
+    let newArr = arr.filter(el => el.id !== product.id);
+    localStorage.setItem('productsInBasket', JSON.stringify(newArr));
+    dispatch({type:DECREASE_PRODUCTAMOUNT_IN_BASKET, payload: newArr });
+} 

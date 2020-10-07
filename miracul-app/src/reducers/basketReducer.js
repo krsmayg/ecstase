@@ -26,12 +26,9 @@ export default(state = initialState, action) => {
                 basketCounter: newCounter
             }
         case DECREASE_BASKET_NUMBER: 
-            console.log('hello from SET_REDUCER');
-            let counter2 = state.basketCounter * 1;
-            let newCounter2 = counter2 - 1;
             return {
                 ...state,
-                basketCounter: newCounter2
+                basketCounter: action.payload
             }
         case ADD_PRODUCT_TO_BASKET:
             return {
