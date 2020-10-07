@@ -30,23 +30,23 @@ export const fetchCollections = () => async dispatch =>  {
 //     });
 //     dispatch({type:FETCH_COLLECIONS, payload: data });
 // };
-export const fetchBasketNumber = () => async dispatch => {
-    let counter = await localStorage.getItem('basketCounter');
+export const fetchBasketNumber = () =>  dispatch => {
+    let counter =  localStorage.getItem('basketCounter');
     dispatch({type:FETCH_BASKET_NUMBER, payload: counter });
 }
 
-export const setBasketNumber = () => async dispatch => {
-    let counter = await localStorage.getItem('basketCounter');
+export const setBasketNumber = () =>  dispatch => {
+    let counter =  localStorage.getItem('basketCounter');
     counter++;
-    await localStorage.setItem('basketCounter',counter);
+    localStorage.setItem('basketCounter',counter);
     dispatch({type:SET_BASKET_NUMBER});
 }
-export const decreaseBasketNumber = () => async dispatch => {
-    let counter = await localStorage.getItem('basketCounter');
-    counter--;
-    await localStorage.setItem('basketCounter',counter);
+export const decreaseBasketNumber = (number) => dispatch => {
+    let counter = localStorage.getItem('basketCounter');
+    number ? counter -= number : counter--;
+    localStorage.setItem('basketCounter',counter);
     dispatch({type:DECREASE_BASKET_NUMBER});
-}
+};
 export const addProductToBasket = (product) => dispatch =>{
     let arr= JSON.parse(localStorage.getItem('productsInBasket'));
     let filteredProduct = arr.find(el => el.id === product.id);

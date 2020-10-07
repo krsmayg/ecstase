@@ -78,6 +78,7 @@ const Toolbar = React.memo(props => {
     const overlayBasket = document.querySelector('.basket-overlay');
     doc.classList.add('visible');
     overlayBasket.classList.add('visible');
+    document.body.classList.add('no-scroll');
   };
   return (
     <header className='toolbar'>

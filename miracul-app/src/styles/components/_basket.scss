@@ -3,7 +3,7 @@
     width: 400px;
     background: $beige-light;
     z-index: 9999;
-    min-height: 100vh;
+    height: 100vh;
     top: 0;
     right: 0;
     transform: translateX(100%);
@@ -50,6 +50,8 @@
 
 .basket-main {
     padding: 0 30px;
+    flex: 1 1 auto;
+    overflow: auto;
 }
 .basket-item {
     display: flex;
@@ -107,7 +109,7 @@
     letter-spacing: 1.15px;
     cursor: pointer;
     transition: all 0.6s linear;
-    font-size: 12px;
+    font-size: 10px;
     position: relative;
     &:hover {
         &::before{
@@ -126,3 +128,36 @@
         transform: scale(1);
     }
 };
+
+.basket-footer {
+    border-top: 1px solid $grey-medium;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 35px;
+    &__checkout-btn {
+        display: flex;
+        font-size: 12px;
+        margin: 0 20px;
+        margin-top: 18px;
+        background: #000;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: .2em;
+        padding: 18px 24px;
+        text-transform: uppercase;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        &:hover {
+            background: #fff;
+            color: #000;
+            border: 1px solid #000;
+
+        }
+    }
+
+}
+.no-scroll {
+    overflow: hidden;
+    position: relative;
+}

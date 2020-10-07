@@ -1,19 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import IosClose from 'react-ionicons/lib/IosClose';
 import {connect} from 'react-redux';
 import {fetchProductsBasket} from '../../actions/index';
 import ToogleBasketItem from './ToogleBasketItem/ToogleBasketItem';
 
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
+
 const Basket = (props) => {
+    const [totalPrice,setTotalPrice] = useState(0);
     const closeBasketHandler = () => {
         const doc = document.getElementById('basket-drawer');
         doc.classList.remove('visible');
         const overlayBasket = document.querySelector('.basket-overlay');
         overlayBasket.classList.remove('visible');
+        document.body.classList.remove('no-scroll');
+
     };
     useEffect(() =>{
         props.fetchProductsBasket();
+        handlePrice();
     }, []);
+    useEffect(() =>{
+        handlePrice();
+    });
+    const handlePrice = () => {
+        if(props.basketState.products) {
+            let totalP = props.basketState.products.reduce((total,product) => {
+                return total + product.price * product.amount
+            },0);
+            setTotalPrice(totalP);
+            console.log('totalPrice: ', totalPrice);
+        }   
+    }
     const renderProducts = () => {
         if(props.basketState.products) {
            return props.basketState.products.map(product => {
@@ -44,8 +63,11 @@ const Basket = (props) => {
                     <h3 className="basket-header__title">Cart</h3>
                     <IosClose fontSize="32px"style={{cursor: 'pointer'}} onClick ={closeBasketHandler}/>
                 </div>
-                <div className="basket-main">
-                    {renderProducts()}
+                    <div className="basket-main">
+                        {renderProducts()}
+                    </div>
+                <div className="basket-footer">
+                    <div className="basket-footer__checkout-btn">Checkout &middot; ${totalPrice}</div>
                 </div>
             </div>
         </>
