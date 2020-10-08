@@ -14,7 +14,7 @@ const posterDescription = (props) => {
         <div className="product-info-size-link" onClick={(event) =>props.priceHandle(event)}>M</div>
         <div className="product-info-size-link active" onClick={(event) =>props.priceHandle(event)}>L</div>
       </div>
-      <button className="product-info-btn">
+      <button className="product-info-btn" onClick={props.addtoBasket}>
         ${props.price} - Add to cart
       </button>
       <div className="product-info-description">

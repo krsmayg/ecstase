@@ -7,32 +7,51 @@ import TitleText from '../../components/Text/TitleText/TitleText';
 import ShopPageInfo from '../../components/ShopPageInfo/ShopPageInfo';
 import WallCollections from '../../components/WallCollections/WallCollections'
 import Spinner from '../../components/UI/Spinner/Spinner';
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {setBasketNumber,addProductToBasket} from '../../actions/index';
+import { v5 as uuidv5 }  from 'uuid';
 
 class ShopPage extends Component {
   state = {
     poster:null,
-    price: 250
+    price: 250,
+    size: 'L'
   }
   posterPriceHandler = (e) => {
     const prices = [this.state.poster.price, this.state.poster.price -10, this.state.poster.price-20]
     const size = e.target.textContent;
     if(size === 'L') {
-      this.setState({price: prices[0]})
+      this.setState({price: prices[0]});
+      this.setState({size: 'L'});
     }else if(size === 'M') {
-      this.setState({price: prices[1]})
+      this.setState({price: prices[1]});
+      this.setState({size: 'M'});
+
     }else if(size === 'S') {
-      this.setState({price: prices[2]})
+      this.setState({price: prices[2]});
+      this.setState({size: 'S'});
     }
     else {
       this.setState({price: this.state.poster.price});
     }
   }
+  addtoBasketHandler = () => {
+    this.props.setBasketNumber();
+    const key  = uuidv5(`${this.state.poster.name} ${this.state.price} ${this.state.size}}`, uuidv5.DNS).split('-')[4];
+    // if(this.state.poster) {}
+    const posterDelievery = {
+      id: key,
+      price: this.state.price,
+      size: this.state.size,
+      name: this.state.poster.name,
+      photo: this.state.poster.images[0], 
+      amount: 1
+    }
+    this.props.addProductToBasket(posterDelievery);
+    console.log(posterDelievery);
+  };
   componentDidUpdate(prevProps, prevState){
-    // console.group('Component Did update: ');
-    // console.log(prevProps);
-    // console.log(this.props);
-    // console.groupEnd();
     if(this.props.location != prevProps.location) {
       const query= this.props.location.search;
       const slug = query.split('=')[1];
@@ -41,6 +60,7 @@ class ShopPage extends Component {
         const poster = {...res.data.data.poster};
         if(poster) {
           this.setState({poster});
+          this.setState({price: poster.price});
         }
       }).catch(err => {
         console.log(err);
@@ -55,6 +75,8 @@ class ShopPage extends Component {
       const poster = {...res.data.data.poster};
       if(poster) {
         this.setState({poster});
+        this.setState({price: poster.price});
+
         // console.log(this.state.poster.images);
       }
     }).catch(err => {
@@ -71,6 +93,7 @@ class ShopPage extends Component {
        title={this.state.poster.name}
        description={this.state.poster.description}
        priceHandle= {this.posterPriceHandler}
+       addtoBasket = {this.addtoBasketHandler}
        />
     } else {
       postersImages = <Spinner />
@@ -89,4 +112,4 @@ class ShopPage extends Component {
     );
   };
 };
-export default withRouter(ShopPage);
+export default connect(null, {setBasketNumber, addProductToBasket})(withRouter(ShopPage));    

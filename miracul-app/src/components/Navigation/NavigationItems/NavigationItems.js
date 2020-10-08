@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
 import NavigationItem from './NavigationItem/NavigationItem'
 import { connect } from 'react-redux';
-// import './NavigationItems.css'
-// const navigationItems = (props) => (
-//   <ul className='nav_links'>
-//     <NavigationItem  link='/' active>Home</NavigationItem>
-//     <NavigationItem  link='/wallshop'>Shop Art</NavigationItem>
-//     <NavigationItem  link='/'>Passengers</NavigationItem>
-//     <NavigationItem  link='/'> About Miracul</NavigationItem>
-//   </ul>
-// );
+
 function NavigationItems(props) {
    const [slug, setSlug] = useState('');
    const createSlug = async() => {
