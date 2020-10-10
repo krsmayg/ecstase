@@ -4,6 +4,7 @@ import {fetchCollections} from '../../actions/index';
 import Spinner from '../UI/Spinner/Spinner'
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
+import {imageUrl} from '../../api/axiosConfig'
 
 const WallCollections = React.memo((props) => {
     useEffect(() => {
@@ -24,12 +25,14 @@ const WallCollections = React.memo((props) => {
         console.log('Posters: ', col.posters);
         const posters = col.posters.map(poster => (
             <div className="wall-poster-item" style={{width:"33.3%", padding: "0 14px", height: "100%"}}>
-                <img src={`http://localhost:9000/images/posters/${poster.imageWall}`} />
+                <div className="wall-poster-item__box">
+                    <img src={`${imageUrl}/posters/${poster.imageWall}`} />
+                </div>
             </div>
         ))
         return(
             <div className="collection-item" >
-                <img src={`http://localhost:9000/images/collections/${col.imageCollection}`} style={{width:'100%', objectFit:'cover'}} />
+                <img src={`${imageUrl}/collections/${col.imageCollection}`} style={{width:'100%', objectFit:'cover'}} />
                 <div className="wall-poster-box" style={{position:'absolute', display: 'flex', top: '19%', left: '50%', transform: 'translateX(-50%)', width: '37%', height: '40%', justifyContent:'center'}}>
                     {posters}
                 </div>

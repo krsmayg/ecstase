@@ -1,5 +1,6 @@
 import React from 'react';
-import Radium from 'radium'
+import Radium from 'radium';
+import {imageUrl} from '../../../api/axiosConfig'
 const posterItem = (props) => {
   const style = {
     // backgroundImage: `url(http://localhost:9000/images/posters/${props.image})`,
@@ -14,8 +15,8 @@ const posterItem = (props) => {
     <div className="poster-container">
       <div className="poster-image-box">
         <a className="poster-link" onClick={props.gotoWallPage}>
-          <img src={`http://localhost:9000/images/posters/${props.image}`} style={style}></img>
-          <img src={`http://localhost:9000/images/posters/${props.imageHover}`} style={style}></img>
+          <img src={`${imageUrl}/posters/${props.image}`} style={style}></img>
+          <img src={`${imageUrl}/posters/${props.imageHover}`} style={style}></img>
         </a>
       </div>
       <div className="poster-title-box">

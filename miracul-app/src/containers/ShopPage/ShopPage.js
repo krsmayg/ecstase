@@ -11,6 +11,7 @@ import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setBasketNumber,addProductToBasket} from '../../actions/index';
 import { v5 as uuidv5 }  from 'uuid';
+import axiosConfig from '../../api/axiosConfig'
 
 class ShopPage extends Component {
   state = {
@@ -56,7 +57,7 @@ class ShopPage extends Component {
       const query= this.props.location.search;
       const slug = query.split('=')[1];
       console.log(slug);
-      axios.get(`http://localhost:9000/api/v1/posters/poster/${slug}`).then(res => {
+      axiosConfig.get(`/posters/poster/${slug}`).then(res => {
         const poster = {...res.data.data.poster};
         if(poster) {
           this.setState({poster});
@@ -71,7 +72,7 @@ class ShopPage extends Component {
     const query= this.props.location.search;
     const slug = query.split('=')[1];
     console.log(slug);
-    axios.get(`http://localhost:9000/api/v1/posters/poster/${slug}`).then(res => {
+    axiosConfig.get(`/posters/poster/${slug}`).then(res => {
       const poster = {...res.data.data.poster};
       if(poster) {
         this.setState({poster});
