@@ -4,20 +4,16 @@ import {imageUrl} from '../../../api/axiosConfig'
 const posterItem = (props) => {
   const style = {
     // backgroundImage: `url(http://localhost:9000/images/posters/${props.image})`,
-    width: "100%",
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    position: "relative",
-    borderRadius: "30px"
+
    
   }
   return(
     <div className="poster-container">
       <div className="poster-image-box">
-        <a className="poster-link" onClick={props.gotoWallPage}>
-          <img src={`${imageUrl}/posters/${props.image}`} style={style}></img>
-          <img src={`${imageUrl}/posters/${props.imageHover}`} style={style}></img>
-        </a>
+        <div className="poster-link" onClick={props.gotoWallPage}>
+          <img src={`${imageUrl}/posters/${props.image}`} style={style} className="poster-link__img--front"></img>
+          <img src={`${imageUrl}/posters/${props.imageHover}`} style={style} className="poster-link__img--back"></img>
+        </div>
       </div>
       <div className="poster-title-box">
         <h3 className="product-title-name">

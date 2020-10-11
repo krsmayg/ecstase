@@ -5,7 +5,7 @@ import Spinner from '../UI/Spinner/Spinner'
 import Swiper from 'react-id-swiper';
 import 'swiper/css/swiper.css';
 import {imageUrl} from '../../api/axiosConfig'
-
+import {withRouter} from 'react-router-dom';
 const WallCollections = React.memo((props) => {
     useEffect(() => {
         props.fetchCollections();
@@ -19,13 +19,20 @@ const WallCollections = React.memo((props) => {
     const posterStyle = {
         
     }
+    const goToPosterDetail = (slug) => {
+        const queryParams = encodeURIComponent("artwork") + '=' + encodeURIComponent(slug);
+        props.history.push({
+          pathname:'/wallshop',
+          search: '?' + queryParams
+        })
+    }
     console.log("Recieve Collections: ", props.collections)
     const collections =  props.collections.map(col => {
         console.log("Collection: ", col)
         console.log('Posters: ', col.posters);
         const posters = col.posters.map(poster => (
             <div className="wall-poster-item" style={{width:"33.3%", padding: "0 14px", height: "100%"}}>
-                <div className="wall-poster-item__box">
+                <div className="wall-poster-item__box" onClick={() => goToPosterDetail(poster.slug)}>
                     <img src={`${imageUrl}/posters/${poster.imageWall}`} />
                 </div>
             </div>
@@ -41,7 +48,7 @@ const WallCollections = React.memo((props) => {
         
     });
     return (  
-        <Swiper {...params}>
+        <Swiper {...params} shouldSwiperUpdate>
             {props.collections ? collections : <Spinner />}
         </Swiper>
     );
@@ -52,4 +59,4 @@ const mapStateToProps = state => {
         collections: state.collectionState.collections,
     }
 }
-export default connect(mapStateToProps, {fetchCollections})(WallCollections);
+export default connect(mapStateToProps, {fetchCollections})(withRouter(WallCollections));

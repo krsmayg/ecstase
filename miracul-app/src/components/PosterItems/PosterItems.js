@@ -1,11 +1,15 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useEffect, useState } from "react";
 import Swiper from 'react-id-swiper';
 import PosterItem from './PosterItem/PosterItem'
 import 'swiper/css/swiper.css';
+import { useMediaQuery } from 'react-responsive'
 
-const PosterItems = (props) => {
+const PosterItems = React.memo((props) => {
+  const [swiper, updateSwiper] = useState(null);
+  // const [slidesView, setSlidesView] = useState(3);
+  const phoneScreen = useMediaQuery({query: '(max-width: 480px)'})
   const params = {
-    slidesPerView: 4,
+    slidesPerView: 3,
     slidesPerGroup: 4,
     // loop: true,
     loopFillGroupWithBlank: true,
@@ -13,6 +17,11 @@ const PosterItems = (props) => {
       el: '.swiper-scrollbar'
     },
   }
+  useEffect(() => {
+    console.log('Params: ', params);
+    console.log('Match size', phoneScreen);
+
+  }, [phoneScreen]);
   console.log(props.posters);
   const posters = props.posters.map(poster => (
     <div key={poster.name} id="swiper-slide">
@@ -27,14 +36,16 @@ const PosterItems = (props) => {
       gotoWallPage={()=> props.goToPage(poster.slug)}
       />
     </div>
- ))
+ ));
   return (
     <Fragment>
-      <Swiper {...params}>
-        {posters}
+      <div className="poster-list">
+      <Swiper {...params} shouldSwiperUpdate>
+          {posters}
       </Swiper>
+      </div>
     </Fragment>
   )
-};
+});
 
 export default PosterItems;

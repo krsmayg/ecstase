@@ -1,4 +1,4 @@
-import { Component, Fragment } from "react";
+import { Component, Fragment, PureComponent } from "react";
 import React from 'react';
 import axios from 'axios';
 import PosterImageList from '../../components/Poster/PosterImageList/PosterImageList';
@@ -13,7 +13,7 @@ import {setBasketNumber,addProductToBasket} from '../../actions/index';
 import { v5 as uuidv5 }  from 'uuid';
 import axiosConfig from '../../api/axiosConfig'
 
-class ShopPage extends Component {
+class ShopPage extends PureComponent {
   state = {
     poster:null,
     price: 250,

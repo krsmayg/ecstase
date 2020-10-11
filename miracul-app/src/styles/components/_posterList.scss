@@ -1,15 +1,32 @@
-.poster-link img:last-child {
-  display: none;  
+// .poster-link img:last-child {
+//   display: none;  
   
-}
-.poster-link:hover img:last-child {
-  display: block;  
-}
-.poster-link:hover img:first-child { 
-  display: none;
-}
+// }
+// .poster-link:hover img:last-child {
+//   display: block;  
+// }
+// .poster-link:hover img:first-child { 
+//   display: none;
+// }
 .poster-link {
   cursor: pointer;
+  position: relative;
+  // display: block;
+  &::after {
+    display: block;
+    padding-top: 100%;
+    content: "";
+  }
+  & img {
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 100%;
+    transition: all .4s ease;
+    transform: translate(-50%,-50%);
+  }
+
 }
 
 .poster-title-box{
@@ -29,4 +46,24 @@ padding-right: 2px;
   color:#bdc3c7;
   font-size: 12;
   font-weight: 200;
+}
+.poster-link{
+  &__img{
+    transition: all .4s ease;
+    &--front {
+      opacity: 1;
+      &:hover {
+        opacity: 0;
+      }
+    }
+    &--back {
+      opacity: 0;
+      &:hover{
+        opacity: 1;
+      }
+    }
+  }
+}
+.poster-list {
+  min-height: 450px;
 }
