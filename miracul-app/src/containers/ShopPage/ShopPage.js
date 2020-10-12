@@ -1,116 +1,131 @@
 import { Component, Fragment, PureComponent } from "react";
-import React from 'react';
-import axios from 'axios';
-import PosterImageList from '../../components/Poster/PosterImageList/PosterImageList';
-import PosterDescription from '../../components/Poster/PosterDescription/PosterDescription';
-import TitleText from '../../components/Text/TitleText/TitleText';
-import ShopPageInfo from '../../components/ShopPageInfo/ShopPageInfo';
-import WallCollections from '../../components/WallCollections/WallCollections'
-import Spinner from '../../components/UI/Spinner/Spinner';
-import {withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
-import {setBasketNumber,addProductToBasket} from '../../actions/index';
-import { v5 as uuidv5 }  from 'uuid';
-import axiosConfig from '../../api/axiosConfig'
+import React from "react";
+import axios from "axios";
+import PosterImageList from "../../components/Poster/PosterImageList/PosterImageList";
+import PosterDescription from "../../components/Poster/PosterDescription/PosterDescription";
+import TitleText from "../../components/Text/TitleText/TitleText";
+import ShopPageInfo from "../../components/ShopPageInfo/ShopPageInfo";
+import WallCollections from "../../components/WallCollections/WallCollections";
+import Spinner from "../../components/UI/Spinner/Spinner";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { setBasketNumber, addProductToBasket } from "../../actions/index";
+import { v5 as uuidv5 } from "uuid";
+import axiosConfig from "../../api/axiosConfig";
 
 class ShopPage extends PureComponent {
   state = {
-    poster:null,
+    poster: null,
     price: 250,
-    size: 'L'
-  }
+    size: "L",
+  };
   posterPriceHandler = (e) => {
-    const prices = [this.state.poster.price, this.state.poster.price -10, this.state.poster.price-20]
+    const prices = [
+      this.state.poster.price,
+      this.state.poster.price - 10,
+      this.state.poster.price - 20,
+    ];
     const size = e.target.textContent;
-    if(size === 'L') {
-      this.setState({price: prices[0]});
-      this.setState({size: 'L'});
-    }else if(size === 'M') {
-      this.setState({price: prices[1]});
-      this.setState({size: 'M'});
-
-    }else if(size === 'S') {
-      this.setState({price: prices[2]});
-      this.setState({size: 'S'});
+    if (size === "L") {
+      this.setState({ price: prices[0] });
+      this.setState({ size: "L" });
+    } else if (size === "M") {
+      this.setState({ price: prices[1] });
+      this.setState({ size: "M" });
+    } else if (size === "S") {
+      this.setState({ price: prices[2] });
+      this.setState({ size: "S" });
+    } else {
+      this.setState({ price: this.state.poster.price });
     }
-    else {
-      this.setState({price: this.state.poster.price});
-    }
-  }
+  };
   addtoBasketHandler = () => {
     this.props.setBasketNumber();
-    const key  = uuidv5(`${this.state.poster.name} ${this.state.price} ${this.state.size}}`, uuidv5.DNS).split('-')[4];
+    const key = uuidv5(
+      `${this.state.poster.name} ${this.state.price} ${this.state.size}}`,
+      uuidv5.DNS
+    ).split("-")[4];
     // if(this.state.poster) {}
     const posterDelievery = {
       id: key,
       price: this.state.price,
       size: this.state.size,
       name: this.state.poster.name,
-      photo: this.state.poster.images[0], 
-      amount: 1
-    }
+      photo: this.state.poster.images[0],
+      amount: 1,
+    };
     this.props.addProductToBasket(posterDelievery);
     console.log(posterDelievery);
   };
-  componentDidUpdate(prevProps, prevState){
-    if(this.props.location != prevProps.location) {
-      const query= this.props.location.search;
-      const slug = query.split('=')[1];
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.location != prevProps.location) {
+      const query = this.props.location.search;
+      const slug = query.split("=")[1];
       console.log(slug);
-      axiosConfig.get(`/posters/poster/${slug}`).then(res => {
-        const poster = {...res.data.data.poster};
-        if(poster) {
-          this.setState({poster});
-          this.setState({price: poster.price});
-        }
-      }).catch(err => {
-        console.log(err);
-      });
+      axiosConfig
+        .get(`/posters/poster/${slug}`)
+        .then((res) => {
+          const poster = { ...res.data.data.poster };
+          if (poster) {
+            this.setState({ poster });
+            this.setState({ price: poster.price });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }
   componentDidMount() {
-    const query= this.props.location.search;
-    const slug = query.split('=')[1];
+    const query = this.props.location.search;
+    const slug = query.split("=")[1];
     console.log(slug);
-    axiosConfig.get(`/posters/poster/${slug}`).then(res => {
-      const poster = {...res.data.data.poster};
-      if(poster) {
-        this.setState({poster});
-        this.setState({price: poster.price});
+    axiosConfig
+      .get(`/posters/poster/${slug}`)
+      .then((res) => {
+        const poster = { ...res.data.data.poster };
+        if (poster) {
+          this.setState({ poster });
+          this.setState({ price: poster.price });
 
-        // console.log(this.state.poster.images);
-      }
-    }).catch(err => {
-      console.log(err);
-    });
+          // console.log(this.state.poster.images);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   render() {
     let postersImages = null;
     let posterDescription = null;
-    if(this.state.poster) {
-       postersImages = <PosterImageList images={this.state.poster.images} />
-       posterDescription = <PosterDescription
-       price={this.state.price} 
-       title={this.state.poster.name}
-       description={this.state.poster.description}
-       priceHandle= {this.posterPriceHandler}
-       addtoBasket = {this.addtoBasketHandler}
-       />
+    if (this.state.poster) {
+      postersImages = <PosterImageList images={this.state.poster.images} />;
+      posterDescription = (
+        <PosterDescription
+          price={this.state.price}
+          title={this.state.poster.name}
+          description={this.state.poster.description}
+          priceHandle={this.posterPriceHandler}
+          addtoBasket={this.addtoBasketHandler}
+        />
+      );
     } else {
-      postersImages = <Spinner />
+      postersImages = <Spinner />;
     }
-    return(
+    return (
       <Fragment>
-         <div id="shop-slider">
-            <WallCollections />
-         </div>
+        <div id="shop-slider">
+          <WallCollections />
+        </div>
         <div className="shop-page-container">
           {posterDescription}
           {postersImages}
         </div>
-         <ShopPageInfo />
+        <ShopPageInfo />
       </Fragment>
     );
-  };
-};
-export default connect(null, {setBasketNumber, addProductToBasket})(withRouter(ShopPage));    
+  }
+}
+export default connect(null, { setBasketNumber, addProductToBasket })(
+  withRouter(ShopPage)
+);
