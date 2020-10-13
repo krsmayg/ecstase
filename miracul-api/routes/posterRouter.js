@@ -11,7 +11,8 @@ router.get('/poster/:slug', posterController.getPoster);
 
 router
   .route('/:id')
-  .get(posterController.getPosterById);
+  .get(posterController.getPosterById)
+  .patch(posterController.updatePosterById);
 
 
 module.exports = router;

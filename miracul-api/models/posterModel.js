@@ -65,13 +65,26 @@ const posterSchema = new mongoose.Schema({
     type: String,
   },
   images: [String],
-  amount: {
+  amountArray: [
+    {
+      name: {
+        type: String,
+        default: 'M',
+        enum: ['S', 'M', 'L']
+      },
+      current: Number,
+      of: Number,
+    }
+  ],
+  totalAmountLeft: {
     type: Number,
-    required: [true, 'A poster must have an amount']
   },
-  currentAmount: {
+  totalAmountOf: {
     type: Number,
-    required: [true, 'A poster must have a current amount']
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now()
   }
 });
 
@@ -82,6 +95,18 @@ posterSchema.pre('save', function(next) {
   });
   next();
 });
+
+posterSchema.pre('save', function(next) {
+  this.totalAmountLeft = this.amountArray.reduce((total,el) => {
+    return total += el.current;
+  },0);
+
+  this.totalAmountOf = this.amountArray.reduce((total,el) => {
+    return total += el.of;
+  },0);
+  next();
+});
+
 
 const Poster = mongoose.model('Poster', posterSchema);
 module.exports = Poster;

@@ -2,6 +2,16 @@ import React from "react";
 // import './PosterDescription.css'
 import Accardion from "./AccordionDescription/AccordionDescription";
 const posterDescription = (props) => {
+  const sizeRender = () => {
+    if (props.sizes) {
+      console.log('Sizes: ',  props.sizes);
+      return props.sizes.map((size) => (
+        <div className="product-info-size-link" onClick={(event) => props.priceHandler(event, size._id)} key={size._id} id={size._id}>
+          {size.name}
+        </div>
+      ));
+    }
+  };
   return (
     <div className="product-info">
       <div className="product-info-wrapper">
@@ -10,24 +20,10 @@ const posterDescription = (props) => {
           <span className="product-info-price">${props.price}</span>
         </h3>
         <div className="product-info-size">
-          <div
-            className="product-info-size-link"
-            onClick={(event) => props.priceHandle(event)}
-          >
-            S
-          </div>
-          <div
-            className="product-info-size-link"
-            onClick={(event) => props.priceHandle(event)}
-          >
-            M
-          </div>
-          <div
-            className="product-info-size-link active"
-            onClick={(event) => props.priceHandle(event)}
-          >
-            L
-          </div>
+          {sizeRender()}
+        </div>
+        <div className="product-info-amount">
+          {props.amountInfo}
         </div>
         <button className="product-info-btn" onClick={props.addtoBasket}>
           ${props.price} - Add to cart

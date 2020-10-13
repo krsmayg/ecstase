@@ -21,12 +21,6 @@
       }
   },
   "rules": {
-      "quotes": [
-          "error",
-          {
-              "allowTemplateLiterals": true
-          }
-      ],
       "semi": 0,
       "default-case": [
           "error",
