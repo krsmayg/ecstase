@@ -76,7 +76,10 @@ const posterSchema = new mongoose.Schema({
       of: Number,
     }
   ],
-  totalAmount: {
+  totalAmountLeft: {
+    type: Number,
+  },
+  totalAmountOf: {
     type: Number,
   },
   createdAt: {
@@ -94,9 +97,13 @@ posterSchema.pre('save', function(next) {
 });
 
 posterSchema.pre('save', function(next) {
-  this.totalAmount = this.amountArray.reduce((total,el) => {
+  this.totalAmountLeft = this.amountArray.reduce((total,el) => {
     return total += el.current;
-  },0)
+  },0);
+
+  this.totalAmountOf = this.amountArray.reduce((total,el) => {
+    return total += el.of;
+  },0);
   next();
 });
 

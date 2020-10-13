@@ -18,26 +18,42 @@ class ShopPage extends PureComponent {
     poster: null,
     price: 250,
     size: "L",
+    amountInfo: ''
   };
-  posterPriceHandler = (e) => {
+  posterPriceHandler = (e, id) => {
     const prices = [
       this.state.poster.price,
       this.state.poster.price - 10,
       this.state.poster.price - 20,
     ];
     const size = e.target.textContent;
-    if (size === "L") {
-      this.setState({ price: prices[0] });
-      this.setState({ size: "L" });
-    } else if (size === "M") {
-      this.setState({ price: prices[1] });
-      this.setState({ size: "M" });
-    } else if (size === "S") {
-      this.setState({ price: prices[2] });
-      this.setState({ size: "S" });
-    } else {
-      this.setState({ price: this.state.poster.price });
+    switch (size) {
+      case "L":
+        this.setState({ price: prices[0] });
+        this.setState({ size: "L" });
+        break;
+      case "M":
+        this.setState({ price: prices[1] });
+        this.setState({ size: "M" });
+        break;
+      case "S":
+        this.setState({ price: prices[2] });
+        this.setState({ size: "S" });
+        break;
+      default:
+        this.setState({ price: this.state.poster.price });
+        break;
     }
+    this.state.poster.amountArray.forEach(el => {
+      if(el.name === this.state.size) {
+        this.setState({amountInfo: `${el.current}/${el.of} left`})
+      }
+    })
+    document
+      .querySelectorAll(".product-info-size-link")
+      .forEach((el) => el.classList.remove("active"));
+    let el = document.getElementById(id);
+    el.classList.add("active");
   };
   addtoBasketHandler = () => {
     this.props.setBasketNumber();
@@ -105,8 +121,10 @@ class ShopPage extends PureComponent {
           price={this.state.price}
           title={this.state.poster.name}
           description={this.state.poster.description}
-          priceHandle={this.posterPriceHandler}
+          priceHandler={this.posterPriceHandler}
           addtoBasket={this.addtoBasketHandler}
+          sizes={this.state.poster.amountArray}
+          amountInfo={this.state.amountInfo}
         />
       );
     } else {

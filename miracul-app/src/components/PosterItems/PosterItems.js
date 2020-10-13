@@ -29,10 +29,12 @@ const PosterItems = React.memo((props) => {
         name={poster.name}
         imageHover={poster.imageCoverHover}
         price={poster.price}
-        amount={poster.amount}
+        amountArray={poster.amountArray}
         currentAmount={poster.currentAmount}
         slug={poster.slug}
         gotoWallPage={() => props.goToPage(poster.slug)}
+        totalAmountLeft = {poster.totalAmountLeft}
+        totalAmountOf = {poster.totalAmountOf}
       />
     </div>
   ));
