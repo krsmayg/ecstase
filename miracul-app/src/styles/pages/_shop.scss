@@ -3,6 +3,10 @@
   flex-flow: row-reverse;
   max-width: 1440px;
   margin: auto;
+  @include respond(tab-small) {
+    flex-direction: column;
+    flex-flow: column-reverse;
+  }
 }
 
 .product-shop-wrapper {
@@ -48,6 +52,11 @@
   box-shadow: 0.3rem 0.4rem 0.4rem rgba(0, 0, 0, 0.4);
   overflow: hidden;
   max-width: 345px;
+  @include respond(tab-small) {
+    max-width: 100%;
+    margin: 0;
+    box-shadow: 0;
+  }
 }
 .product-item-image {
   display: block;
@@ -78,6 +87,9 @@
     display: none;
   }
   max-height: 1000px;
+  @include respond(tab-small) {
+    align-self: center;
+  }
 }
 .product-info-title {
   font-size: 40px;

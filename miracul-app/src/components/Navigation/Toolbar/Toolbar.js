@@ -68,9 +68,9 @@ const Toolbar = React.memo((props) => {
                 </span>
                 <span className="right-nav__searhed-list__item-container__info-box__subTitle">
                   <span style={{ color: "#e74c3c", fontWeight: "bold" }}>
-                    {poster.currentAmount}
+                    {poster.totalAmountLeft}
                   </span>{" "}
-                  / {poster.amount} left{" "}
+                  / {poster.totalAmountOf} left{" "}
                 </span>
               </div>
             </div>

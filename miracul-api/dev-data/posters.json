@@ -54,5 +54,47 @@
   "artist": "Leonardo Senas",
   "images" : ["poster-4-1.jpg","poster-4-2.jpg","poster-4-3.jpg","poster-4-4.jpg"],
   "amountArray": [{"name": "S", "current": 30, "of": 30}, {"name": "M", "current": 15, "of": 15},{"name": "L", "current": 10, "of": 12}]
+},
+{
+  "name": "Lonely Rock",
+  "price": 80,
+  "ratingsQuantity": 4,
+  "ratingsAverage": 4.9,
+  "description": "This limited edition release is printed in bright, vivid colors on a thick piece of woven canvas. Each print contains a serial number guaranteeing its originality. Curated by Ecstase in a collaboration with Leonardo Senas for a limited edition of 125.",
+  "size": "L",
+  "imageCover": "poster-5-1.jpg",
+  "imageCoverHover": "poster-5-2.jpg",
+  "imageWall":  "poster-5-w.jpg",
+  "artist": "Leonardo Senas",
+  "images" : ["poster-5-1.jpg","poster-5-2.jpg","poster-5-3.jpg","poster-5-4.jpg"],
+  "amountArray": [{"name": "S", "current": 10, "of": 10}, {"name": "M", "current": 15, "of": 15},{"name": "L", "current": 12, "of": 12}]
+},
+{
+  "name": "House in Grass",
+  "price": 90,
+  "ratingsQuantity": 4,
+  "ratingsAverage": 4.9,
+  "description": "This limited edition release is printed in bright, vivid colors on a thick piece of woven canvas. Each print contains a serial number guaranteeing its originality. Curated by Ecstase in a collaboration with Leonardo Senas for a limited edition of 125.",
+  "size": "L",
+  "imageCover": "poster-6-1.jpg",
+  "imageCoverHover": "poster-6-2.jpg",
+  "imageWall":  "poster-6-w.jpg",
+  "artist": "Leonardo Senas",
+  "images" : ["poster-6-1.jpg","poster-6-2.jpg","poster-6-3.jpg","poster-6-4.jpg"],
+  "amountArray": [{"name": "S", "current": 5, "of": 5}, {"name": "M", "current": 10, "of": 10},{"name": "L", "current": 6, "of": 12}]
+},
+{
+  "name": "Away chill",
+  "price": 80,
+  "ratingsQuantity": 4,
+  "ratingsAverage": 4.9,
+  "description": "This limited edition release is printed in bright, vivid colors on a thick piece of woven canvas. Each print contains a serial number guaranteeing its originality. Curated by Ecstase in a collaboration with Leonardo Senas for a limited edition of 125.",
+  "size": "L",
+  "imageCover": "poster-7-1.jpg",
+  "imageCoverHover": "poster-7-2.jpg",
+  "imageWall":  "poster-7-w.jpg",
+  "artist": "Leonardo Senas",
+  "images" : ["poster-7-1.jpg","poster-7-2.jpg","poster-7-3.jpg","poster-7-4.jpg"],
+  "amountArray": [{"name": "S", "current": 8, "of": 8}, {"name": "M", "current": 12, "of": 12},{"name": "L", "current": 8, "of": 12}]
 }
 ]
