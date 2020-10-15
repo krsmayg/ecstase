@@ -3,19 +3,19 @@ import Swiper from "react-id-swiper";
 import PosterItem from "./PosterItem/PosterItem";
 import "swiper/css/swiper.css";
 import { useMediaQuery } from "react-responsive";
-
 const PosterItems = React.memo((props) => {
   const [swiper, updateSwiper] = useState(null);
   // const [slidesView, setSlidesView] = useState(3);
   const phoneScreen = useMediaQuery({ query: "(max-width: 480px)" });
   const params = {
     slidesPerView: 3,
-    slidesPerGroup: 4,
-    // loop: true,
+    slidesPerGroup: 5,
+    freeMode: true,
     loopFillGroupWithBlank: true,
     scrollbar: {
       el: ".swiper-scrollbar",
     },
+    
   };
   useEffect(() => {
     console.log("Params: ", params);
@@ -30,11 +30,11 @@ const PosterItems = React.memo((props) => {
         imageHover={poster.imageCoverHover}
         price={poster.price}
         amountArray={poster.amountArray}
-        currentAmount={poster.currentAmount}
         slug={poster.slug}
         gotoWallPage={() => props.goToPage(poster.slug)}
         totalAmountLeft = {poster.totalAmountLeft}
         totalAmountOf = {poster.totalAmountOf}
+        date={poster.createdAt}
       />
     </div>
   ));

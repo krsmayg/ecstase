@@ -11,11 +11,8 @@ const PosterImageList = (props) => {
   const params = {
     slidesPerView: 1,
     slidesPerGroup: 4,
-    // loop: true,
+    freeMode: true,
     loopFillGroupWithBlank: true,
-    // scrollbar: {
-    //   el: ".swiper-scrollbar",
-    // },
   };
   const posterImages = props.images.map((im) => {
     return (
