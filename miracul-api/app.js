@@ -11,6 +11,7 @@ const globalErrorHandler = require('./controllers/errorController');
 
 const posterRouter = require('./routes/posterRouter');
 const collectionRouter = require('./routes/collectionRouter')
+const userRouter = require('./routes/userRouter')
 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -45,6 +46,7 @@ app.use(xss());
 //ROUTES
 app.use('/api/v1/posters',posterRouter);
 app.use('/api/v1/collections',collectionRouter);
+app.use('/api/v1/users',userRouter);
 
 // error handler
 app.all('*', (req, res, next) => {
