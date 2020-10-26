@@ -88,3 +88,5 @@ export const removeProductFromBasket = (product) =>  dispatch => {
     localStorage.setItem('productsInBasket', JSON.stringify(newArr));
     dispatch({type:DECREASE_PRODUCTAMOUNT_IN_BASKET, payload: newArr });
 } 
+
+/////////////////////////////////////////////////////////////////////////////////////

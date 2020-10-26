@@ -29,6 +29,7 @@
     "eslint-plugin-react-hooks": "^1.6.1",
     "file-loader": "4.3.0",
     "font-awesome": "^4.7.0",
+    "formik": "^2.2.0",
     "fs-extra": "^8.1.0",
     "html-webpack-plugin": "4.0.0-beta.11",
     "identity-obj-proxy": "3.0.0",
@@ -67,12 +68,14 @@
     "swiper": "^5.3.8",
     "terser-webpack-plugin": "2.3.5",
     "ts-pnp": "1.1.6",
+    "universal-cookie": "^4.0.4",
     "url-loader": "2.3.0",
     "uuid": "^8.3.1",
     "webpack": "4.42.0",
     "webpack-dev-server": "3.10.3",
     "webpack-manifest-plugin": "2.2.0",
-    "workbox-webpack-plugin": "4.3.1"
+    "workbox-webpack-plugin": "4.3.1",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "node scripts/start.js",

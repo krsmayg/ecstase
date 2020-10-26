@@ -1,11 +1,12 @@
-.btn:link,.btn-white:visited {
+.btn:link,
+.btn-white:visited {
   // text-transform: uppercase;
   text-decoration: none;
   font-weight: bold;
   padding: 1.2rem 6rem;
   display: inline-block;
   border-radius: 10rem;
-  transition: all .2s;
+  transition: all 0.2s;
   font-size: 1.2rem;
   background-color: $black;
   color: $white;
@@ -23,21 +24,44 @@
   background-color: $black;
 }
 .btn--animated {
-  animation: moveInUp 1s ease-out .75s;
+  animation: moveInUp 1s ease-out 0.75s;
   animation-fill-mode: backwards;
-  /* 0%(in animation) - initial statement of the btn*/ }
+  /* 0%(in animation) - initial statement of the btn*/
+}
 
 .btn:hover {
   transform: translateY(-3px);
   background-color: $black !important;
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-  .btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0; }
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
 
 .btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.auth-btn {
+  margin: 20px 0;
+  text-decoration: none;
+  background-color: #2980b9;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 400;
+  transition: all 0.2s;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #1873af;
+  }
+}
 
 // .btn::after {
 //   content: "";
@@ -52,7 +76,7 @@
 //   /*Выравнивание кнопки*/
 //   z-index: -1;
 //   /*на задний план осн кнопки*/
-//   transition: all .4s; 
+//   transition: all .4s;
 //   @include respond(tab-land) {
 //     content: none;
 //   }
