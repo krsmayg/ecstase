@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/auth";
-
+import {withRouter} from "react-router-dom"
 const Login = (props) => {
   const initialValues = {
     email: "",
@@ -21,7 +21,7 @@ const Login = (props) => {
     validationSchema,
   });
   const handleLogin = (userData) => {
-    props.loginUser(userData);
+    props.loginUser(userData).then(res => res.status === 200 ? props.history.push('/dashboard') : null);
   };
   return (
     <div className="login-container">
@@ -72,4 +72,4 @@ const Login = (props) => {
   );
 };
 
-export default connect(null, { loginUser })(Login);
+export default connect(null, { loginUser })(withRouter(Login));

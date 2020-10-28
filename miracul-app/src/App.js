@@ -1,11 +1,19 @@
-import React, { Component } from 'react';
-import { Router, Switch, Route } from 'react-router-dom';
-import Layout from './containers/Layout/Layout';
-import HomePage from './containers/HomePage/HomePage';
-import ShopPage from './containers/ShopPage/ShopPage';
-import Login from './containers/Auth/Login';
-import SignUp from './containers/Auth/SignUp';
-class App extends Component {
+import React, { PureComponent } from "react";
+import { Router, Switch, Route } from "react-router-dom";
+import Layout from "./containers/Layout/Layout";
+import HomePage from "./containers/HomePage/HomePage";
+import ShopPage from "./containers/ShopPage/ShopPage";
+import Login from "./containers/Auth/Login";
+import SignUp from "./containers/Auth/SignUp";
+import ProtectedRoute from "./hoc/protectedRoute";
+import ProtectedComponent from "./containers/ProtectedComponent";
+import { connect } from "react-redux";
+import { setAuth } from "./actions/auth";
+class App extends PureComponent {
+  componentDidMount() {
+    this.props.setAuth();
+  }
+
   render() {
     return (
       <div className="App">
@@ -15,11 +23,19 @@ class App extends Component {
             <Route path="/" component={HomePage} exact />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
+            <ProtectedRoute
+              path="/dashboard"
+              component={ProtectedComponent}
+              authed={this.props.isRouterAuth}
+            />
           </Switch>
         </Layout>
       </div>
     );
   }
 }
+const mapStateToProps = (state) => ({
+  isRouterAuth: state.authState.isRouterAuth,
+});
 
-export default App;
+export default connect(mapStateToProps, { setAuth })(App);
