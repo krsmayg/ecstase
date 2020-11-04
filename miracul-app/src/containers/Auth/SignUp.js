@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
 import { signupUser } from "../../actions/auth";
+import Layout from "../Layout/Layout";
 
 const SignUp = (props) => {
   const initialValues = {
@@ -38,6 +39,7 @@ const SignUp = (props) => {
     props.signupUser(userData);
   }
   return (
+  <Layout>
     <div className="login-container">
       <div className="login-data">
         <h1>SignUp.</h1>
@@ -117,6 +119,7 @@ const SignUp = (props) => {
         <img src={img} width="620"></img>
       </div>
     </div>
+    </Layout>
   );
 };
 

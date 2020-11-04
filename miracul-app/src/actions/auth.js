@@ -1,6 +1,6 @@
 import axiosData from "../api/axiosConfig";
 import Cookies from "universal-cookie";
-import { LOGIN_USER, SIGNUP_USER, SET_AUTH } from "./actionTypes";
+import { LOGIN_USER, SIGNUP_USER, SET_AUTH, GET_ME } from "./actionTypes";
 export const loginUser = (userData) => async (dispatch) => {
   let dataResponse = {};
   const res = await axiosData.post("/users/login", {
@@ -46,3 +46,29 @@ export const setAuth = () => async (dispatch) => {
         payload: { isLogin: false, isRouterAuth: "failed" },
       });
 };
+
+export const getMe = () => async (dispatch) => {
+  const jwt = new Cookies().get("jwt");
+  let dataResponse = {};
+  try {
+    const res = await axiosData.get('/users/me', {headers: {"Authorization" : `Bearer ${jwt}`} });
+    dataResponse =  await res.data.data;
+    console.log(dataResponse);
+    dispatch({
+      type: GET_ME,
+      payload: { user: dataResponse.doc, isLogin: true },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export const logout = () => async (dispatch) => {
+  new Cookies().remove('jwt');  
+  dispatch({
+        type: SET_AUTH,
+        payload: { isLogin: false, isRouterAuth: "pending" },
+      });
+  return 'logout'
+};
+ 

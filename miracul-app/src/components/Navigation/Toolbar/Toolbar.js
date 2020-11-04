@@ -114,7 +114,7 @@ const Toolbar = React.memo((props) => {
       <div className="right-nav">
         <IosCartOutline
           onClick={basketHandler}
-          fontSize="24px"
+          fontSize="34px"
           className="toolbar--cart"
         />
         <div className="toolbar--counter">
@@ -122,7 +122,7 @@ const Toolbar = React.memo((props) => {
         </div>
         <IosSearchOutline
           onClick={() => setSearchInputVisibility(!searchInputVisibility)}
-          fontSize="24px"
+          fontSize="34px"
           className="toolbar--search"
         />
         {searchInputVisibility ? (

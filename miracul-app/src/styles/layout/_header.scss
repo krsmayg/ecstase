@@ -4,19 +4,22 @@
   align-items: center;
   padding: 10px 3%;
   background-color: #fff;
-  height: 45px;
+  // height: 45px;
   position: fixed;
-  width: 96%;
+  // width: 100%;
   z-index: 4;
   top: 0;
+  right: 0;
+  left: 0;
   border-bottom: 1px solid #ecf0f1;
-  &--cart,&--search {
+  &--cart,
+  &--search {
     cursor: pointer;
     padding: 0 5px;
   }
   &--counter {
     position: absolute;
-    top: -8px;
+    top: -5px;
     left: 21px;
     background-color: #000;
     color: #fff;
@@ -28,7 +31,6 @@
     font-size: 12px;
     border-radius: 50%;
   }
-
 }
 .right-nav {
   position: relative;
@@ -41,7 +43,6 @@
       border: none !important;
       border-radius: 0 !important;
     }
-
   }
   &__searhed-list {
     background-color: #fff;
@@ -51,7 +52,7 @@
     width: 236px;
     max-height: 340px;
     overflow-y: scroll;
-    
+
     &__list-info {
       padding: 5px;
       background-color: #f2f2f2;
@@ -62,7 +63,7 @@
     }
     &__item-container {
       & ~ :not(:first-child) {
-        border-top: 1px solid  #2d3436;
+        border-top: 1px solid #2d3436;
       }
       &:hover {
         background-color: #dcdde1ed;
@@ -76,14 +77,13 @@
         flex-direction: column;
 
         &__title {
-            font-size: 14px;
-            font-weight:bold;
+          font-size: 14px;
+          font-weight: bold;
         }
         &__subTitle {
           margin-top: 10px;
           font-size: 12px;
-      }
-        
+        }
       }
     }
   }
@@ -91,7 +91,7 @@
 .menu-nav {
   text-align: center;
   flex-grow: 1;
-  transition: height 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  transition: height 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   @include respond(tab-small) {
     z-index: -1;
     position: absolute;
@@ -122,6 +122,7 @@
   align-items: center;
   font-weight: 500;
   text-align: center;
+  margin: 0;
   @include respond(tab-small) {
     display: none;
   }
@@ -138,20 +139,21 @@
     & a {
       color: black;
       height: 100%;
-      padding: 23px 10px;
+      font-size: 14px;
+      padding: 20px 10px;
       @include respond(tab-small) {
         color: #fff;
       }
       &.active,
       &:hover,
       &:active {
-          bottom: 0;
-          border-bottom: 1.5px solid $grey-medium ;
-          transition: all .4s ease 0s;
-          @include respond(tab-small) {
-            border-bottom: none;
-            color: $grey-light;
-          }
+        bottom: 0;
+        border-bottom: 2px solid $grey-medium;
+        transition: all 0.4s ease 0s;
+        @include respond(tab-small) {
+          border-bottom: none;
+          color: $grey-medium;
+        }
       }
     }
   }
@@ -167,9 +169,8 @@
   }
 }
 
-
 .toolbar .toolbar-li .toolbar-a {
-  font-family: 'arial';
+  font-family: "arial";
   font-size: 24px;
   display: block;
   width: 100%;
@@ -187,7 +188,6 @@
   margin-right: 6rem;
 }
 .toolbar-cart {
-
 }
 
 .menu-btn {
@@ -197,7 +197,7 @@
   width: 35px;
   height: 35px;
   cursor: pointer;
-  transition: all .5s ease-out;
+  transition: all 0.5s ease-out;
   // border: 1px solid #000;
   position: relative;
   @include respond(tab-small) {
@@ -208,15 +208,16 @@
     height: 2px;
     background: #000;
     border-radius: 3px;
-    transition: all .5s ease-out;
-    &::before, &::after {
-      content: '';
+    transition: all 0.5s ease-out;
+    &::before,
+    &::after {
+      content: "";
       position: absolute;
       width: 20px;
       height: 2px;
       background: #000;
       border-radius: 3px;
-      transition: all .5s ease-out;
+      transition: all 0.5s ease-out;
     }
     &::before {
       transform: translateY(-5px);
@@ -226,14 +227,28 @@
     }
   }
 }
-.menu-btn.open .menu-btn__burger  {
-    transform:  translateX(-35px);
-    background: transparent;
-    box-shadow: none;
-    &::before {
-      transform: rotate(45deg) translate(25px,-25px);
-    }
-    &::after {
-      transform: rotate(-45deg) translate(25px,25px);
-    }
+.menu-btn.open .menu-btn__burger {
+  transform: translateX(-35px);
+  background: transparent;
+  box-shadow: none;
+  &::before {
+    transform: rotate(45deg) translate(25px, -25px);
+  }
+  &::after {
+    transform: rotate(-45deg) translate(25px, 25px);
+  }
+}
+
+.controlPanel-header {
+  display: flex;
+  justify-content: space-between;
+  &__right-nav {
+    margin-left: 20px;
+  }
+}
+.ant-layout-sider-trigger {
+  background: #040505 !important;
+  &:hover {
+    background: #141a1a !important;
+  }
 }

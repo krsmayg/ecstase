@@ -7,7 +7,7 @@ import NewsBoard from "../../components/Board/NewsBoard/NewsBoard";
 import VideoBoard from "../../components/Board/VideoBoard/VideoBoard";
 import TitleText from "../../components/Text/TitleText/TitleText";
 import Spinner from "../../components/UI/Spinner/Spinner";
-
+import Layout from "../Layout/Layout";
 import { fetchPosters } from "../../actions";
 import { connect } from "react-redux";
 class HomePage extends Component {
@@ -38,22 +38,24 @@ class HomePage extends Component {
   }
   render() {
     return (
-      <Fragment>
-        <HeroBoard />
-        <TitleText
-          mainText="New Release"
-          sText="THIS WEEK’S RELEASE OF LIMITED ARTWORKS"
-        />
-        {this.renderPosters()}
-        <NewsBoard />
-        <br />
-        <TitleText
-          mainText="Sold products"
-          sText="DON’T MISS THE CHANCE TO GET YOUR ARTWORK"
-        />
-        <Spinner />
-        <VideoBoard />
-      </Fragment>
+      <Layout>
+        <Fragment>
+          <HeroBoard />
+          <TitleText
+            mainText="New Release"
+            sText="THIS WEEK’S RELEASE OF LIMITED ARTWORKS"
+          />
+          {this.renderPosters()}
+          <NewsBoard />
+          <br />
+          <TitleText
+            mainText="Sold products"
+            sText="DON’T MISS THE CHANCE TO GET YOUR ARTWORK"
+          />
+          <Spinner />
+          <VideoBoard />
+        </Fragment>
+      </Layout>
     );
   }
 }

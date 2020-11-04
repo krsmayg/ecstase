@@ -3,7 +3,9 @@
   flex-flow: row-reverse;
   max-width: 1440px;
   margin: auto;
+  margin-top: 40px;
   @include respond(tab-small) {
+    margin-top: 10px;
     flex-direction: column;
     flex-flow: column-reverse;
   }
@@ -34,7 +36,7 @@
 .product-gallery-container {
   margin: 0 auto;
   padding: 0 2rem 2rem;
-  width: 51%;
+  width: auto;
   overflow-y: scroll;
   &::-webkit-scrollbar {
     display: none;

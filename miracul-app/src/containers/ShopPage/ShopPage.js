@@ -12,13 +12,14 @@ import { connect } from "react-redux";
 import { setBasketNumber, addProductToBasket } from "../../actions/index";
 import { v5 as uuidv5 } from "uuid";
 import axiosConfig from "../../api/axiosConfig";
+import Layout from "../Layout/Layout";
 
 class ShopPage extends PureComponent {
   state = {
     poster: null,
     price: 250,
     size: "L",
-    amountInfo: ''
+    amountInfo: "",
   };
   posterPriceHandler = (e, id) => {
     const prices = [
@@ -44,11 +45,11 @@ class ShopPage extends PureComponent {
         this.setState({ price: this.state.poster.price });
         break;
     }
-    this.state.poster.amountArray.forEach(el => {
-      if(el.name === this.state.size) {
-        this.setState({amountInfo: `${el.current}/${el.of} left`})
+    this.state.poster.amountArray.forEach((el) => {
+      if (el.name === this.state.size) {
+        this.setState({ amountInfo: `${el.current}/${el.of} left` });
       }
-    })
+    });
     document
       .querySelectorAll(".product-info-size-link")
       .forEach((el) => el.classList.remove("active"));
@@ -131,16 +132,18 @@ class ShopPage extends PureComponent {
       postersImages = <Spinner />;
     }
     return (
-      <Fragment>
-        <div id="shop-slider">
-          <WallCollections />
-        </div>
-        <div className="shop-page-container">
-          {posterDescription}
-          {postersImages}
-        </div>
-        <ShopPageInfo />
-      </Fragment>
+      <Layout>
+        <Fragment>
+          <div id="shop-slider">
+            <WallCollections />
+          </div>
+          <div className="shop-page-container">
+            {posterDescription}
+            {postersImages}
+          </div>
+          <ShopPageInfo />
+        </Fragment>
+      </Layout>
     );
   }
 }

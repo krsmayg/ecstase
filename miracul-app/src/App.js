@@ -6,7 +6,7 @@ import ShopPage from "./containers/ShopPage/ShopPage";
 import Login from "./containers/Auth/Login";
 import SignUp from "./containers/Auth/SignUp";
 import ProtectedRoute from "./hoc/protectedRoute";
-import ProtectedComponent from "./containers/ProtectedComponent";
+import ControlPanel from "./containers/ControlPanel/ControlPanel";
 import { connect } from "react-redux";
 import { setAuth } from "./actions/auth";
 class App extends PureComponent {
@@ -17,7 +17,6 @@ class App extends PureComponent {
   render() {
     return (
       <div className="App">
-        <Layout>
           <Switch>
             <Route path="/wallshop" component={ShopPage} />
             <Route path="/" component={HomePage} exact />
@@ -25,11 +24,10 @@ class App extends PureComponent {
             <Route path="/signup" component={SignUp} />
             <ProtectedRoute
               path="/dashboard"
-              component={ProtectedComponent}
+              component={ControlPanel}
               authed={this.props.isRouterAuth}
             />
           </Switch>
-        </Layout>
       </div>
     );
   }
