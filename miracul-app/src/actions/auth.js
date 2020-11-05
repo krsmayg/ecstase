@@ -23,15 +23,15 @@ export const loginUser = (userData) => async (dispatch) => {
 export const signupUser = (userData) => async (dispatch) => {
   let dataResponse = {};
   console.log("hello from sign up", userData);
-  await axiosData.post("/users/signup", { ...userData }).then((res) => {
-    dataResponse = res.data;
-    const cookies = new Cookies();
-    cookies.set("jwt", res.data.token);
-  });
+  const res = await axiosData.post("/users/signup", { ...userData });
+  dataResponse = res.data;
+  const cookies = new Cookies();
+  cookies.set("jwt", res.data.token);
   dispatch({
     type: SIGNUP_USER,
     payload: { user: dataResponse.data.user, isLogin: true },
   });
+  return res;
 };
 
 export const setAuth = () => async (dispatch) => {
@@ -51,8 +51,10 @@ export const getMe = () => async (dispatch) => {
   const jwt = new Cookies().get("jwt");
   let dataResponse = {};
   try {
-    const res = await axiosData.get('/users/me', {headers: {"Authorization" : `Bearer ${jwt}`} });
-    dataResponse =  await res.data.data;
+    const res = await axiosData.get("/users/me", {
+      headers: { Authorization: `Bearer ${jwt}` },
+    });
+    dataResponse = await res.data.data;
     console.log(dataResponse);
     dispatch({
       type: GET_ME,
@@ -61,14 +63,13 @@ export const getMe = () => async (dispatch) => {
   } catch (err) {
     console.log(err);
   }
-}
+};
 
 export const logout = () => async (dispatch) => {
-  new Cookies().remove('jwt');  
+  new Cookies().remove("jwt");
   dispatch({
-        type: SET_AUTH,
-        payload: { isLogin: false, isRouterAuth: "pending" },
-      });
-  return 'logout'
+    type: SET_AUTH,
+    payload: { isLogin: false, isRouterAuth: "pending" },
+  });
+  return "logout";
 };
- 

@@ -25,9 +25,9 @@ const Login = (props) => {
     props
       .loginUser(userData)
       .then((res) =>
-        res.status === (200 || 'success') ? props.history.push("/dashboard") : null
+        res.status === (200 || 'success') ? props.history.push("/dashboard") : props.history.push("/")
       );
-  };
+  };  
   return (
     <Layout>
       {" "}
