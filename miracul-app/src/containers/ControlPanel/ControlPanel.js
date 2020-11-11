@@ -18,6 +18,7 @@ import { Route, Switch, withRouter, Router, Link } from "react-router-dom";
 import Statistic from "./Statistic";
 import AddPosterPage from "./AddPosterPage";
 import PosterTablePage from "./PosterTablePage";
+import UpdatePosterPage from "./UpdatePosterPage";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -81,6 +82,7 @@ const ControlPanel = React.memo((props) => {
         <Content style={{ margin: "0 16px" }}>
           <Switch>
             <Route path="/dashboard/statistic" component={Statistic}></Route>
+            <Route path="/dashboard/poster-update" component={UpdatePosterPage}></Route>
             <Route path="/dashboard/posters-table" component={PosterTablePage}></Route>
             <Route
               path="/dashboard/add-posters/"

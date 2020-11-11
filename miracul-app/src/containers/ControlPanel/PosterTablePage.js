@@ -60,7 +60,9 @@ const PosterTablePage = (props) => {
           >
             <Button>Delete</Button>
           </Popconfirm>
-          <Button style={{marginLeft: 5 }}>Update</Button>
+          <Link to={`/dashboard/poster-update?id=${record._id}`}>
+            <Button style={{marginLeft: 5 }}>Update</Button>
+          </Link>
         </>
       ),
     },

@@ -25,7 +25,9 @@ const Login = (props) => {
     props
       .loginUser(userData)
       .then((res) =>
-        res.status === (200 || 'success') ? props.history.push("/dashboard") : props.history.push("/")
+        res.status === (200 || 'success') ? setTimeout(() => {
+          props.history.push("/dashboard/statistic");
+        }, 1000) : props.history.push("/")
       );
   };  
   return (
