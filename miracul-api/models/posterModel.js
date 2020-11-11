@@ -7,7 +7,7 @@ const posterSchema = new mongoose.Schema({
     unique: true,
     trim: true,
     maxlength: [40, 'A poster must have less or equal then 40 characters'],
-    minlength: [10, 'A poster must have at least 10 characters']
+    minlength: [5, 'A poster must have at least 5 characters']
   },
   slug: String,
   ratingsAverage: {
@@ -23,7 +23,7 @@ const posterSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    required: [true, 'A tour must have a price!!']
+    required: [true, 'A poster must have a price!!']
   },
   priceDiscount: {
     type: Number,
@@ -55,11 +55,11 @@ const posterSchema = new mongoose.Schema({
   },
   imageCover: {
     type: String,
-    required: [true, 'A tour must have a cover image']
+    // required: [true, 'A poster must have a cover image']
   },
   imageCoverHover: {
     type: String,
-    required: [true, 'A tour must have a hover image']
+    // required: [true, 'A poster must have a hover image']
   },
   imageWall: {
     type: String,

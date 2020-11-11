@@ -16,6 +16,7 @@ export const fetchPosters = () => async (dispatch) => {
     data = res.data.data.docs;
   });
   dispatch({ type: FETCH_POSTERS, payload: data });
+  return data;
 };
 
 export const fetchCollections = () => async (dispatch) => {

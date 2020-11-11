@@ -12,10 +12,12 @@ import {
   FileOutlined,
   TeamOutlined,
   UserOutlined,
+  TableOutlined
 } from "@ant-design/icons";
 import { Route, Switch, withRouter, Router, Link } from "react-router-dom";
 import Statistic from "./Statistic";
-import PosterController from "./PosterController";
+import AddPosterPage from "./AddPosterPage";
+import PosterTablePage from "./PosterTablePage";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -25,6 +27,7 @@ const ControlPanel = React.memo((props) => {
   useEffect(() => {
     props.getMe();
   }, []);
+
   const onCollapse = (collapsed) => {
     console.log(collapsed);
     setCollapsed(collapsed);
@@ -55,11 +58,9 @@ const ControlPanel = React.memo((props) => {
           <Menu.Item key="2" icon={<FileImageOutlined />}>
             <Link to="/dashboard/add-posters">Add posters</Link>
           </Menu.Item>
-          <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-            <Menu.Item key="3">Tom</Menu.Item>
-            <Menu.Item key="4">Bill</Menu.Item>
-            <Menu.Item key="5">Alex</Menu.Item>
-          </SubMenu>
+          <Menu.Item key="3" icon={<TableOutlined />}>
+            <Link to="/dashboard/posters-table">Posters List</Link>
+          </Menu.Item>
           <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
             <Menu.Item key="6">Team 1</Menu.Item>
             <Menu.Item key="8">Team 2</Menu.Item>
@@ -80,9 +81,10 @@ const ControlPanel = React.memo((props) => {
         <Content style={{ margin: "0 16px" }}>
           <Switch>
             <Route path="/dashboard/statistic" component={Statistic}></Route>
+            <Route path="/dashboard/posters-table" component={PosterTablePage}></Route>
             <Route
               path="/dashboard/add-posters/"
-              component={PosterController}
+              component={AddPosterPage}
             ></Route>
           </Switch>
         </Content>
