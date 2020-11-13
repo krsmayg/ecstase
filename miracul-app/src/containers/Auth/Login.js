@@ -24,10 +24,15 @@ const Login = (props) => {
   const handleLogin = (userData) => {
     props
       .loginUser(userData)
-      .then((res) =>
-        res.status === (200 || 'success') ? setTimeout(() => {
-          props.history.push("/dashboard/statistic");
-        }, 1000) : props.history.push("/")
+      .then((res) => {
+        console.log("Response: ", res)
+        if(res.status === (200 || 'success')) {
+          console.log("Response: ", )
+          props.history.push("/dashboard");
+        } else { 
+
+        }
+      }
       );
   };  
   return (

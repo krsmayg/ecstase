@@ -16,12 +16,15 @@ export default (state = initialState, action) => {
         ...state,
         isLogin: action.payload.isLogin,
         userData: action.payload.user,
+        isRouterAuth: action.payload.isRouterAuth,
       };
     case SIGNUP_USER:
       return {
         ...state,
         isLogin: action.payload.isLogin,
         userData: action.payload.user,
+        isRouterAuth: action.payload.isRouterAuth,
+
       };
     case SET_AUTH:
       return {

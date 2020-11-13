@@ -7,15 +7,13 @@ export const loginUser = (userData) => async (dispatch) => {
     email: userData.email,
     password: userData.password,
   });
-
   dataResponse = res.data;
   console.log(res.data);
   const cookies = new Cookies();
   cookies.set("jwt", res.data.token);
-
   dispatch({
     type: LOGIN_USER,
-    payload: { user: dataResponse.data.user, isLogin: true },
+    payload: { user: dataResponse.data.user, isLogin: true, isRouterAuth: "done" },
   });
   return res;
 };
@@ -29,7 +27,7 @@ export const signupUser = (userData) => async (dispatch) => {
   cookies.set("jwt", res.data.token);
   dispatch({
     type: SIGNUP_USER,
-    payload: { user: dataResponse.data.user, isLogin: true },
+    payload: { user: dataResponse.data.user, isLogin: true, isRouterAuth: "done" },
   });
   return res;
 };
