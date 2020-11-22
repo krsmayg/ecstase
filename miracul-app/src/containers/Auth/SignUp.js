@@ -42,7 +42,7 @@ const SignUp = (props) => {
     props
       .signupUser(userData)
       .then((res) =>
-        res.status === (200 || "success")
+        res.status === (201 || "success")
           ? props.history.push("/dashboard")
           : addToast(res.message, { appearance: 'error' })
       );
