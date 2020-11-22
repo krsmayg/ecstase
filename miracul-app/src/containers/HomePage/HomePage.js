@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Fragment } from "react";
-
 import HeroBoard from "../../components/Board/HeroBoard/HeroBoard";
 import PosterItems from "../../components/PosterItems/PosterItems";
 import NewsBoard from "../../components/Board/NewsBoard/NewsBoard";

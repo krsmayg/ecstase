@@ -13,6 +13,8 @@ import { setBasketNumber, addProductToBasket } from "../../actions/index";
 import { v5 as uuidv5 } from "uuid";
 import axiosConfig from "../../api/axiosConfig";
 import Layout from "../Layout/Layout";
+import PosterItems from "../../components/PosterItems/PosterItems";
+import { fetchPosters } from "../../actions";
 
 class ShopPage extends PureComponent {
   state = {
@@ -104,13 +106,32 @@ class ShopPage extends PureComponent {
         if (poster) {
           this.setState({ poster });
           this.setState({ price: poster.price });
-
-          // console.log(this.state.poster.images);
         }
       })
       .catch((err) => {
         console.log(err);
       });
+      if(this.props.posters.length <= 0) {
+        this.props.fetchPosters();
+      }
+  }
+  goToDetailPosterHandler = (slug) => {
+    const queryParams =
+      encodeURIComponent("artwork") + "=" + encodeURIComponent(slug);
+    this.props.history.push({
+      pathname: "/wallshop",
+      search: "?" + queryParams,
+    });
+  };
+  renderPosters() {
+    return !this.props.posters ? (
+      <Spinner />
+    ) : (
+      <PosterItems
+        posters={this.props.posters}
+        goToPage={this.goToDetailPosterHandler}
+      />
+    );
   }
   render() {
     let postersImages = null;
@@ -142,11 +163,21 @@ class ShopPage extends PureComponent {
             {postersImages}
           </div>
           <ShopPageInfo />
+          <TitleText
+            mainText="New Release"
+            sText="THIS WEEK’S RELEASE OF LIMITED ARTWORKS"
+          />
+          {this.renderPosters()}
         </Fragment>
       </Layout>
     );
   }
 }
-export default connect(null, { setBasketNumber, addProductToBasket })(
+const mapStateToProps = (state) => {
+  return {
+    posters: state.posters,
+  };
+};
+export default connect(mapStateToProps, { setBasketNumber, addProductToBasket,fetchPosters })(
   withRouter(ShopPage)
 );
