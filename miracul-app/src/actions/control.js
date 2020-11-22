@@ -10,8 +10,10 @@ export const createPoster = (data) => async (dispatch) => {
   try {
     const res = await axiosData.post("/posters/", data, config);
     console.log("data sent successfully", res);
+    return res;
   } catch (err) {
     console.log("Catched err", err.message);
+    return err;
   }
 
   // dispatch({ type: CREATE_POSTER, payload: data });
@@ -23,6 +25,7 @@ export const deletePoster = (id) => async (dispatch) => {
     dispatch({type: DELETE_POSTER, payload: id});
   } catch (err) {
     console.log("Catched err", err.message);
+    return err;
   }
 
   // dispatch({ type: CREATE_POSTER, payload: data });

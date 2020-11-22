@@ -5,9 +5,13 @@ import { fetchPosters } from "../../actions/index";
 import { deletePoster } from "../../actions/control";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import { imageUrl } from "../../api/axiosConfig";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import {useToasts } from 'react-toast-notifications';
+
 const PosterTablePage = (props) => {
   const [posterData, setPosterData] = useState([]);
+  const { addToast } = useToasts();
+
   useEffect(() => {
     props.fetchPosters().then((res) => {
       setPosterData(res);
@@ -18,6 +22,7 @@ const PosterTablePage = (props) => {
     const data = posterData.filter((item) => item._id !== id);
     setPosterData(data);
     props.deletePoster(id);
+    addToast('Poster was deleted', { appearance: 'warning' });
   };
   const columns = [
     {

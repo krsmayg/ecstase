@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import axiosConfig from "../../api/axiosConfig";
 import { Form, Input, Button, Radio, InputNumber } from "antd";
+import {useToasts } from 'react-toast-notifications';
+
 class Size {
   constructor(name, current) {
     this.name = name;
@@ -10,6 +12,7 @@ class Size {
   }
 }
 const UpdatePosterPage = (props) => {
+  const { addToast } = useToasts();
   const [poster, setPoster] = useState({});
   const [form] = Form.useForm();
   const { TextArea } = Input;
@@ -67,8 +70,8 @@ const UpdatePosterPage = (props) => {
   const handleSubmit = () => {
     console.log('submit');
     axiosConfig.patch(`/posters/${poster._id}`, poster).then(res => {
-        console.log(res);
-    }).catch(err => console.log(err));
+      addToast('Data successfully updated', { appearance: 'success' });
+    }).catch(err =>  addToast(err, { appearance: 'error' }));
   }
   return (
     <div className="product-managment-container">

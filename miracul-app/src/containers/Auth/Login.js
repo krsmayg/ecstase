@@ -6,7 +6,9 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/auth";
 import { withRouter } from "react-router-dom";
 import Layout from "../Layout/Layout";
+import {useToasts } from 'react-toast-notifications';
 const Login = (props) => {
+  const { addToast } = useToasts();
   const initialValues = {
     email: "",
     password: "",
@@ -27,18 +29,16 @@ const Login = (props) => {
       .then((res) => {
         console.log("Response: ", res)
         if(res.status === (200 || 'success')) {
-          console.log("Response: ", )
           props.history.push("/dashboard");
         } else { 
-
+          addToast(res.message, { appearance: 'error' });
         }
       }
       );
   };  
   return (
     <Layout>
-      {" "}
-      <div className="login-container">
+    <div className="login-container">
         <div className="login-data">
           <h1>Log in.</h1>
           <form onSubmit={formik.handleSubmit} className="login-data__form">

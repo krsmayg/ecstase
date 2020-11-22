@@ -4,15 +4,12 @@ import ImageController from "../../components/ImageController/ImageController";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { createPoster } from "../../actions/control";
-class Size {
-  constructor(name, current) {
-    this.name = name;
-    this.current = current;
-    this.of = current;
-  }
-}
+import {useToasts } from 'react-toast-notifications';
+
 const PosterController = (props) => {
   const [form] = Form.useForm();
+  const { addToast } = useToasts();
+
   const { TextArea } = Input;
   const [poster, setPosterData] = useState({
     name: "",
@@ -58,23 +55,6 @@ const PosterController = (props) => {
     posterCopy.price = e;
     setPosterData(posterCopy);
   };
-  const sizeHandler = (e, name) => {
-    const size = new Size(name, e);
-    let posterCopy = { ...poster };
-    if (
-      !posterCopy.amountArray.find((el) => el.name === size.name) ||
-      posterCopy.amountArray.length == 0
-    ) {
-      posterCopy.amountArray.push(size);
-    } else {
-      const index = posterCopy.amountArray.findIndex(
-        (el) => el.name === size.name
-      );
-      posterCopy.amountArray[index].current = size.current;
-      posterCopy.amountArray[index].of = size.current;
-    }
-    setPosterData(posterCopy);
-  };
   const handleSubmit = () => {
     let formData = new FormData();
     formData.append("name", poster.name);
@@ -88,7 +68,11 @@ const PosterController = (props) => {
     for (var pair of formData.entries()) {
       console.log(pair[0] + ", " + pair[1]);
     }
-    props.createPoster(formData);
+    props.createPoster(formData).then((res) =>
+    res.status === (201 || "success")
+      ? addToast('Data successfully added', { appearance: 'success' })
+      : addToast(res.message, { appearance: 'error' })
+    );
   };
   return (
     <div className="product-managment-container">
@@ -118,20 +102,6 @@ const PosterController = (props) => {
           />
         </Form.Item>
       </Form>
-      {/* <h2 className="big-title" style={{ margin: "20px 0" }}>
-        Sizes Amount
-      </h2>
-      <Form layout="inline">
-        <Form.Item label="S">
-          <InputNumber defaultValue={0} min={0} onChange={(e) => sizeHandler(e, 'S')} />
-        </Form.Item>
-        <Form.Item label="M">
-          <InputNumber defaultValue={0} min={0} onChange={(e) => sizeHandler(e, 'M')} />
-        </Form.Item>
-        <Form.Item label="L">
-          <InputNumber defaultValue={0} min={0} onChange={(e) => sizeHandler(e, 'L')} />
-        </Form.Item>
-      </Form> */}
       <h2 className="big-title" style={{ margin: "20px 0" }}>
         Upload Photos
       </h2>

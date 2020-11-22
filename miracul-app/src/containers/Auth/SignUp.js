@@ -6,8 +6,10 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import { signupUser } from "../../actions/auth";
 import Layout from "../Layout/Layout";
+import {useToasts } from 'react-toast-notifications';
 
 const SignUp = (props) => {
+  const { addToast } = useToasts();
   const initialValues = {
     email: "",
     password: "",
@@ -42,7 +44,7 @@ const SignUp = (props) => {
       .then((res) =>
         res.status === (200 || "success")
           ? props.history.push("/dashboard")
-          : props.history.push("/")
+          : addToast(res.message, { appearance: 'error' })
       );
   };
   return (

@@ -9,6 +9,8 @@ import ProtectedRoute from "./hoc/protectedRoute";
 import ControlPanel from "./containers/ControlPanel/ControlPanel";
 import { connect } from "react-redux";
 import { setAuth } from "./actions/auth";
+import { ToastProvider } from 'react-toast-notifications'
+
 class App extends PureComponent {
   componentDidMount() {
     this.props.setAuth();
@@ -17,7 +19,8 @@ class App extends PureComponent {
   render() {
     return (
       <div className="App">
-          <Switch>
+        <ToastProvider>
+        <Switch>
             <Route path="/wallshop" component={ShopPage} />
             <Route path="/" component={HomePage} exact />
             <Route path="/login" component={Login} />
@@ -28,6 +31,8 @@ class App extends PureComponent {
               authed={this.props.isRouterAuth}
             />
           </Switch>
+        </ToastProvider>
+     
       </div>
     );
   }
