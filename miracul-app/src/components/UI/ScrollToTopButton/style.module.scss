@@ -1,0 +1,33 @@
+
+.scrollTop {
+  position: fixed; 
+  // width: 100%;
+  right: 10px;
+  bottom: 20px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  text-align:right;
+  cursor: pointer;
+  animation: fadeIn 0.3s;
+  transition: all 0.4s;
+  opacity: 0.8; 
+  font-size: 30px;
+  width: 45px;
+  height: 45px;
+
+}
+
+.scrollTop:hover{
+  opacity: 1;
+  transform: scale(1.1)
+}
+
+@keyframes fadeIn { //анимация может вЫзвать ошибку при билде продж
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}

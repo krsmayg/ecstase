@@ -121,7 +121,8 @@ class ShopPage extends PureComponent {
     this.props.history.push({
       pathname: "/wallshop",
       search: "?" + queryParams,
-    });
+    }); 
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   renderPosters() {
     return !this.props.posters ? (

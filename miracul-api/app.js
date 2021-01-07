@@ -17,7 +17,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(cookieParser());
-app.use(cors({ origin: `http://localhost:${3000 || 3001}`, credentials: true }));
+app.use(cors({ origin: `http://localhost:${3000 || 5000}`, credentials: true }));
 
 //1) GLOBAL MIDDLEWARES
 // Serving static files
