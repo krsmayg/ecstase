@@ -7,6 +7,7 @@ import Login from "./containers/Auth/Login";
 import SignUp from "./containers/Auth/SignUp";
 import ProtectedRoute from "./hoc/protectedRoute";
 import ControlPanel from "./containers/ControlPanel/ControlPanel";
+import Checkout from "./containers/Checkout";
 import { connect } from "react-redux";
 import { setAuth } from "./actions/auth";
 import { ToastProvider } from 'react-toast-notifications'
@@ -22,6 +23,7 @@ class App extends PureComponent {
         <ToastProvider>
         <Switch>
             <Route path="/wallshop" component={ShopPage} />
+            <Route path="/checkout" component={Checkout} />
             <Route path="/" component={HomePage} exact />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
