@@ -40,14 +40,13 @@ const StripeCheckout = ({ products }) => {
     }
   };
   return (
-    <form onSubmit={handleGuestCheckout}>
+    <form onSubmit={handleGuestCheckout} className="checkout">
       <div className="login-data__form__input-box">
         <input
           type="email"
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
-          value={email}
-        
+          value={email}   
         />
       </div>
       <button className="basket-footer__checkout-btn" type="submit">

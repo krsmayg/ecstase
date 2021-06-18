@@ -161,3 +161,9 @@
   overflow: hidden;
   position: relative;
 }
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

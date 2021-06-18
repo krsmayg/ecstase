@@ -3,6 +3,7 @@ import IosClose from "react-ionicons/lib/IosClose";
 import { connect } from "react-redux";
 import { fetchProductsBasket } from "../../actions/index";
 import ToogleBasketItem from "./ToogleBasketItem/ToogleBasketItem";
+import { withRouter } from 'react-router-dom';
 
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
@@ -70,7 +71,7 @@ const Basket = (props) => {
         </div>
         <div className="basket-main">{renderProducts()}</div>
         <div className="basket-footer">
-          <div className="basket-footer__checkout-btn">
+          <div className="basket-footer__checkout-btn" onClick={() => props.history.push('/checkout')}>
             Checkout &middot; ${totalPrice}
           </div>
         </div>
@@ -83,4 +84,4 @@ const mapStateToProps = (state) => {
     basketState: state.basketState,
   };
 };
-export default connect(mapStateToProps, { fetchProductsBasket })(Basket);
+export default withRouter(connect(mapStateToProps, { fetchProductsBasket })(Basket));
